@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>샘플 서비스 페이지</title>
+    <link rel="stylesheet" href="/css/jjsonviewer.css">
+
+    <!-- 부트스트랩 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <style>
+        #nlu_result {margin-bottom:5px;}
+        entity{ color:red }
+    </style>
+
+    <script type="text/javascript" src="/js/lib/jquery.js"></script>
+    <script type="text/javascript" src="/js/jjsonviewer.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            $("#keyword").keyup(function() {
+                var data = "q="+ $("#keyword").val();
+//                var daisyDomain = "http://169.56.102.29:10000" ;
+                 $.ajax({
+                    url : "/v1/jaso/search",
+                    method: "GET",
+                    data: data,
+                    success: function(json)
+                    {
+
+                        $("#ajaxData").empty();
+                        var listLen = json.items.length;
+
+                        var contentStr = "";
+                        for(var i=0; i<listLen; i++){
+                            contentStr += json.items[i].alinknm+"</br>";
+                        }
+                         $("#ajaxData").append(contentStr);
+
+
+                        //data - response from server
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        //alert(jpXHR + " : " + error);
+                    }
+                });
+            });
+            $("#keyword").keydown(function() {
+                var data = "q="+ $("#keyword").val();
+                 $.ajax({
+                    url : "/v1/jaso/search",
+                    method: "GET",
+                    data: data,
+                    success: function(json)
+                    {
+
+                        $("#ajaxData").empty();
+                        var listLen = json.items.length;
+
+                        var contentStr = "";
+                        for(var i=0; i<listLen; i++){
+                            contentStr += json.items[i].alinknm+"</br>";
+                        }
+                        $("#ajaxData").append(contentStr);
+
+
+                        //data - response from server
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        //alert(jpXHR + " : " + error);
+                    }
+                });
+            });
+
+            $("#srh_nugu").click(function () {
+//
+                var keyword = $("#keyword").val().trim();
+                var we1 = $("#we1").val().trim();
+                var we2 = $("#we2").val().trim();
+                var we3 = $("#we3").val().trim();
+
+                var f_we1 = $("#f_we1").val().trim();
+                var f_we2 = $("#f_we2").val().trim();
+                var f_we3 = $("#f_we3").val().trim();
+
+                var e_we1 = $("#e_we1").val().trim();
+                var e_we2 = $("#e_we2").val().trim();
+                var e_we3 = $("#e_we3").val().trim();
+//
+//                var n_we1 = $("#n_we1").val().trim();
+//                var n_we2 = $("#n_we2").val().trim();
+//                var n_we3 = $("#n_we3").val().trim();
+
+                $("#w1").val(we1);
+                $("#w2").val(we2);
+                $("#w3").val(we3);
+                $("#f_w1").val(f_we1);
+                $("#f_w2").val(f_we2);
+                $("#f_w3").val(f_we3);
+                $("#e_w1").val(e_we1);
+                $("#e_w2").val(e_we2);
+                $("#e_w3").val(e_we3);
+//                $("#n_w1").val(n_we1);
+//                $("#n_w2").val(n_we2);
+//                $("#n_w3").val(n_we3);
+
+                if(keyword === ''){
+                    alert("질의어를 입력해주세요");
+                    $("#keyword").val('');
+                    $("#keyword").focus();
+                    return false;
+
+                }
+
+
+            });
+        });
+
+    </script>
+
+
+ </head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><B>테스트 페이지</B></a>
+            </div>
+            <form id="send" action="/v1/views/search" method="get" class="navbar-form navbar-right">
+
+                <div class="form-group">
+                    <input style="width:400px" name="keyword" id="keyword" type="text"  value="<%=quest %>" class="form-control">
+                    <div style="position:absolute;">
+                        <table style="width:400px;padding:10px;"  id="name_table" bgcolor="red" border="1" cellspacing="2" cellpadding="3"/>
+                          <tbody  style="background-color:white;padding:10px;">
+                            <tr id="ajaxData"></tr>
+                          </tbody>
+                        </table>
+
+                    </div>
+                    <input name="w1" id="w1" type="hidden"  value="<%=w1 %>">
+                    <input name="w2" id="w2" type="hidden"  value="<%=w2 %>">
+                    <input name="w3" id="w3" type="hidden"  value="<%=w3 %>">
+                    <input name="f_w1" id="f_w1" type="hidden"  value="<%=fw1 %>">
+                    <input name="f_w2" id="f_w2" type="hidden"  value="<%=fw2 %>">
+                    <input name="f_w3" id="f_w3" type="hidden"  value="<%=fw3 %>">
+                    <input name="e_w1" id="e_w1" type="hidden"  value="<%=ew1 %>">
+                    <input name="e_w2" id="e_w2" type="hidden"  value="<%=ew2 %>">
+                    <input name="e_w3" id="e_w3" type="hidden"  value="<%=ew3 %>">
+                    <!--<input name="n_w1" id="n_w1" type="hidden"  value="<%=nw1 %>">-->
+                    <!--<input name="n_w2" id="n_w2" type="hidden"  value="<%=nw2 %>">-->
+                    <!--<input name="n_w3" id="n_w3" type="hidden"  value="<%=nw3 %>">-->
+                </div>
+
+            <button id="srh_nugu" type="submit" class="btn btn-success">문장</button>
+            </form>
+        </div>
+    </nav>
+
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <h5>* 가중치(정확히 매핑)</h5>
+        <div class="row">
+            <div class="col-md-3">
+                 <div class="input-group input-group-sm">
+                    <span class="input-group-addon" >아이템</span>
+                    <input id="we1" type="text" class="form-control" placeholder="아이템 가중치"  value="<%=w1%>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon" >브랜드</span>
+                        <input id="we2" type="text" class="form-control" placeholder="브랜드 가중치"  value="<%=w2%>">
+                    </div>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">규격</span>
+                    <input  id="we3" type="text" class="form-control" placeholder="규격 가중치" value="<%=w3%>">
+                </div>
+
+            </div>
+         </div>
+        <h5>* 가중치(전방 매핑단어)</h5>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon" >아이템</span>
+                    <input id="f_we1" type="text" class="form-control" placeholder="아이템 가중치"  value="<%=fw1%>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon" >브랜드</span>
+                    <input id="f_we2" type="text" class="form-control" placeholder="브랜드 가중치"  value="<%=fw2%>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">규격</span>
+                    <input  id="f_we3" type="text" class="form-control" placeholder="규격 가중치" value="<%=fw3%>">
+                </div>
+            </div>
+        </div>
+        <h5>* 가중치(후방 매핑단어)</h5>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon" >아이템</span>
+                    <input id="e_we1" type="text" class="form-control" placeholder="아이템 가중치"  value="<%=ew1%>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon" >브랜드</span>
+                    <input id="e_we2" type="text" class="form-control" placeholder="브랜드 가중치"  value="<%=ew2%>">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-addon">규격</span>
+                    <input  id="e_we3" type="text" class="form-control" placeholder="규격 가중치" value="<%=ew3%>">
+                </div>
+            </div>
+        </div>
+        <!--<h5>* 가중치(Ngram 으로 잘라서 매핑시)</h5>-->
+        <!--<div class="row">-->
+            <!--<div class="col-md-3">-->
+                <!--<div class="input-group input-group-sm">-->
+                    <!--<span class="input-group-addon" >아이템</span>-->
+                    <!--<input id="n_we1" type="text" class="form-control" placeholder="아이템 가중치"  value="<%=nw1%>">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-3">-->
+                <!--<div class="input-group input-group-sm">-->
+                    <!--<span class="input-group-addon" >브랜드</span>-->
+                    <!--<input id="n_we2" type="text" class="form-control" placeholder="브랜드 가중치"  value="<%=nw2%>">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-3">-->
+                <!--<div class="input-group input-group-sm">-->
+                    <!--<span class="input-group-addon">규격</span>-->
+                    <!--<input  id="n_we3" type="text" class="form-control" placeholder="규격 가중치" value="<%=nw3%>">-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+</div>
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-12">
+
+
+            <!--<div id="ajaxData" name="ajaxData"></div>-->
+            <h5>* 총 검색수 :  <%=total%></h5>
+
+                <% for (var i = 0; i < yusa.length; i++) { %>
+                <li>
+                <em><%=yusaword[i]%></em> : <%=JSON.stringify(yusa[i])%>
+                <br>
+                </li>
+                <% }%>
+
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th>스코어</th>
+                    <th>아이템코드</th>
+                    <th>아이템명</th>
+                    <th>브랜드명</th>
+                    <th>가격표맵핑</th>
+                    <th>판매량</th>
+                    <th>규격</th>
+                    <th>모델명</th>
+                    <!--<th style="width:100px" nowrap>유사어</th>-->
+                </tr>
+
+                <% for(var i=0; i < item.length; i++) { %>
+                <%if(i % 2 == 0){%>
+                <tr>
+                    <td><%=i+1 %></td>
+                    <td><%= item[i].score %></td>
+                    <td><%= item[i].itemcd %></td>
+                    <td><%= item[i].itemnm %></td>
+                    <td><%= item[i].brandnm %></td>
+                    <td><%= item[i].ebookyn %></td>
+                    <td><%= item[i].sale_qty %></td>
+                    <td><%= item[i].stdz %></td>
+                    <td><%= item[i].modl_no %></td>
+
+                </tr>
+                <!--<tr>-->
+                    <!--<td></td>-->
+                    <!--<td colspan="10">유사어 : <%= item[i].yusa %></td>-->
+                <!--</tr>-->
+                <% }else{ %>
+                <tr style="height:45px" class="active">
+                    <td><%=i+1 %></td>
+                    <td><%= item[i].score %></td>
+                    <td><%= item[i].itemcd %></td>
+                    <td><%= item[i].itemnm %></td>
+                    <td><%= item[i].brandnm %></td>
+                    <td><%= item[i].ebookyn %></td>
+                    <td><%= item[i].sale_qty %></td>
+                    <td><%= item[i].stdz %></td>
+                    <td><%= item[i].modl_no %></td>
+                </tr>
+                <!--<tr>-->
+                    <!--<td> </td>-->
+                    <!--<td colspan="10">유사어 :<%= item[i].yusa %></td>-->
+                <!--</tr>-->
+                <% } } %>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- /container -->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
+<!-- 모든 컴파일된 플러그인을 포함합니다 (아래), 원하지 않는다면 필요한 각각의 파일을 포함하세요 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,846 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/bin/npm', 'install', 'pm2' ]
+2 info using npm@1.3.6
+3 info using node@v0.10.48
+4 warn package.json css@1.0.8 No repository field.
+5 warn package.json css-parse@1.0.4 No repository field.
+6 warn package.json css-stringify@1.0.5 No repository field.
+7 warn package.json escape-regexp@0.0.1 No repository field.
+8 warn package.json event-loop-inspector@1.2.2 No repository field.
+9 verbose readDependencies using package.json deps
+10 verbose cache add [ 'pm2@^4.0.1', null ]
+11 verbose cache add name=undefined spec="pm2@^4.0.1" args=["pm2@^4.0.1",null]
+12 verbose parsed url { protocol: null,
+12 verbose parsed url   slashes: null,
+12 verbose parsed url   auth: null,
+12 verbose parsed url   host: null,
+12 verbose parsed url   port: null,
+12 verbose parsed url   hostname: null,
+12 verbose parsed url   hash: null,
+12 verbose parsed url   search: null,
+12 verbose parsed url   query: null,
+12 verbose parsed url   pathname: 'pm2@^4.0.1',
+12 verbose parsed url   path: 'pm2@^4.0.1',
+12 verbose parsed url   href: 'pm2@^4.0.1' }
+13 verbose cache add name="pm2" spec="^4.0.1" args=["pm2","^4.0.1"]
+14 verbose parsed url { protocol: null,
+14 verbose parsed url   slashes: null,
+14 verbose parsed url   auth: null,
+14 verbose parsed url   host: null,
+14 verbose parsed url   port: null,
+14 verbose parsed url   hostname: null,
+14 verbose parsed url   hash: null,
+14 verbose parsed url   search: null,
+14 verbose parsed url   query: null,
+14 verbose parsed url   pathname: '^4.0.1',
+14 verbose parsed url   path: '^4.0.1',
+14 verbose parsed url   href: '^4.0.1' }
+15 verbose addNamed [ 'pm2', '^4.0.1' ]
+16 verbose addNamed [ null, '>=4.0.1-0 <5.0.0-0' ]
+17 silly lockFile c9d1365e-pm2-4-0-1 pm2@^4.0.1
+18 verbose lock pm2@^4.0.1 /root/.npm/c9d1365e-pm2-4-0-1.lock
+19 silly addNameRange { name: 'pm2', range: '>=4.0.1-0 <5.0.0-0', hasData: false }
+20 verbose url raw pm2
+21 verbose url resolving [ 'http://registry.npmjs.org/', './pm2' ]
+22 verbose url resolved http://registry.npmjs.org/pm2
+23 info trying registry request attempt 1 at 10:50:14
+24 verbose etag W/"1fa1ab4d4f1b8556d0ef48c8e41b95f8"
+25 http GET http://registry.npmjs.org/pm2
+26 http 304 http://registry.npmjs.org/pm2
+27 silly registry.get cb [ 304,
+27 silly registry.get   { date: 'Wed, 23 Oct 2019 01:50:14 GMT',
+27 silly registry.get     connection: 'keep-alive',
+27 silly registry.get     'set-cookie': [ '__cfduid=df9e75ba064e63d5f99d3fd8f0522f8561571795414; expires=Thu, 22-Oct-20 01:50:14 GMT; path=/; domain=.npmjs.org; HttpOnly' ],
+27 silly registry.get     'cf-cache-status': 'HIT',
+27 silly registry.get     'cache-control': 'max-age=300',
+27 silly registry.get     'cf-ray': '52a00f1d9ee639f8-ICN',
+27 silly registry.get     age: '96',
+27 silly registry.get     etag: '"1fa1ab4d4f1b8556d0ef48c8e41b95f8"',
+27 silly registry.get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+27 silly registry.get     'last-modified': 'Tue, 15 Oct 2019 18:54:50 GMT',
+27 silly registry.get     vary: 'accept-encoding, accept',
+27 silly registry.get     'x-amz-meta-rev': '1608-284ec821aef46ac35f6e035d452e5bfd',
+27 silly registry.get     server: 'cloudflare' } ]
+28 verbose etag pm2 from cache
+29 silly addNameRange number 2 { name: 'pm2', range: '>=4.0.1-0 <5.0.0-0', hasData: true }
+30 silly addNameRange versions [ 'pm2',
+30 silly addNameRange   [ '0.4.0',
+30 silly addNameRange     '0.4.1',
+30 silly addNameRange     '0.4.2',
+30 silly addNameRange     '0.4.3',
+30 silly addNameRange     '0.4.4',
+30 silly addNameRange     '0.4.5',
+30 silly addNameRange     '0.4.6',
+30 silly addNameRange     '0.4.7',
+30 silly addNameRange     '0.4.8',
+30 silly addNameRange     '0.4.10',
+30 silly addNameRange     '0.4.11',
+30 silly addNameRange     '0.4.12',
+30 silly addNameRange     '0.4.13',
+30 silly addNameRange     '0.4.14',
+30 silly addNameRange     '0.5.0',
+30 silly addNameRange     '0.5.1',
+30 silly addNameRange     '0.5.2',
+30 silly addNameRange     '0.5.3',
+30 silly addNameRange     '0.5.4',
+30 silly addNameRange     '0.5.5',
+30 silly addNameRange     '0.5.6',
+30 silly addNameRange     '0.5.7',
+30 silly addNameRange     '0.6.2',
+30 silly addNameRange     '0.6.3',
+30 silly addNameRange     '0.6.4',
+30 silly addNameRange     '0.6.5',
+30 silly addNameRange     '0.6.6',
+30 silly addNameRange     '0.6.7',
+30 silly addNameRange     '0.6.8',
+30 silly addNameRange     '0.6.9',
+30 silly addNameRange     '0.6.10',
+30 silly addNameRange     '0.6.11',
+30 silly addNameRange     '0.6.12',
+30 silly addNameRange     '0.6.13',
+30 silly addNameRange     '0.6.14',
+30 silly addNameRange     '0.6.15',
+30 silly addNameRange     '0.7.0',
+30 silly addNameRange     '0.7.1',
+30 silly addNameRange     '0.7.2',
+30 silly addNameRange     '0.7.3',
+30 silly addNameRange     '0.7.4',
+30 silly addNameRange     '0.7.5',
+30 silly addNameRange     '0.7.6',
+30 silly addNameRange     '0.7.7',
+30 silly addNameRange     '0.7.8',
+30 silly addNameRange     '0.8.0',
+30 silly addNameRange     '0.8.1',
+30 silly addNameRange     '0.8.2',
+30 silly addNameRange     '0.8.3',
+30 silly addNameRange     '0.8.4',
+30 silly addNameRange     '0.8.5',
+30 silly addNameRange     '0.8.6',
+30 silly addNameRange     '0.8.7',
+30 silly addNameRange     '0.8.8',
+30 silly addNameRange     '0.8.9',
+30 silly addNameRange     '0.8.10',
+30 silly addNameRange     '0.8.11',
+30 silly addNameRange     '0.8.12',
+30 silly addNameRange     '0.8.13',
+30 silly addNameRange     '0.8.14',
+30 silly addNameRange     '0.8.15',
+30 silly addNameRange     '0.9.0',
+30 silly addNameRange     '0.9.1',
+30 silly addNameRange     '0.9.2',
+30 silly addNameRange     '0.9.3',
+30 silly addNameRange     '0.9.4',
+30 silly addNameRange     '0.9.5',
+30 silly addNameRange     '0.9.6',
+30 silly addNameRange     '0.10.0-beta1',
+30 silly addNameRange     '0.10.0-beta2',
+30 silly addNameRange     '0.10.0-beta4',
+30 silly addNameRange     '0.10.0-beta5',
+30 silly addNameRange     '0.10.0-beta6',
+30 silly addNameRange     '0.10.0-beta7',
+30 silly addNameRange     '0.10.0-beta8',
+30 silly addNameRange     '0.10.0-beta9',
+30 silly addNameRange     '0.10.0-beta10',
+30 silly addNameRange     '0.10.0-beta11',
+30 silly addNameRange     '0.10.0-beta12',
+30 silly addNameRange     '0.10.0-beta13',
+30 silly addNameRange     '0.10.0-beta14',
+30 silly addNameRange     '0.10.0-beta15',
+30 silly addNameRange     '0.10.0-beta16',
+30 silly addNameRange     '0.10.0-beta17',
+30 silly addNameRange     '0.10.0-beta18',
+30 silly addNameRange     '0.10.0-beta19',
+30 silly addNameRange     '0.10.0-beta20',
+30 silly addNameRange     '0.10.0-beta21',
+30 silly addNameRange     '0.10.0-beta22',
+30 silly addNameRange     '0.10.0-beta23',
+30 silly addNameRange     '0.10.0-beta25',
+30 silly addNameRange     '0.10.0',
+30 silly addNameRange     '0.10.1',
+30 silly addNameRange     '0.10.2',
+30 silly addNameRange     '0.10.3',
+30 silly addNameRange     '0.10.4',
+30 silly addNameRange     '0.10.5',
+30 silly addNameRange     '0.10.6',
+30 silly addNameRange     '0.10.7',
+30 silly addNameRange     '0.10.8',
+30 silly addNameRange     '0.11.0-beta1',
+30 silly addNameRange     '0.11.0',
+30 silly addNameRange     '0.11.1',
+30 silly addNameRange     '0.12.0',
+30 silly addNameRange     '0.12.1',
+30 silly addNameRange     '0.12.2',
+30 silly addNameRange     '0.12.3',
+30 silly addNameRange     '0.12.4',
+30 silly addNameRange     '0.12.5',
+30 silly addNameRange     '0.12.6',
+30 silly addNameRange     '0.12.7',
+30 silly addNameRange     '0.12.8',
+30 silly addNameRange     '0.12.9',
+30 silly addNameRange     '0.12.10',
+30 silly addNameRange     '0.12.11',
+30 silly addNameRange     '0.12.12',
+30 silly addNameRange     '0.12.13',
+30 silly addNameRange     '0.12.14',
+30 silly addNameRange     '0.12.15',
+30 silly addNameRange     '0.12.16',
+30 silly addNameRange     '0.14.0',
+30 silly addNameRange     '0.14.1',
+30 silly addNameRange     '0.14.2',
+30 silly addNameRange     '0.14.3',
+30 silly addNameRange     '0.14.4',
+30 silly addNameRange     '0.14.5',
+30 silly addNameRange     '0.14.6',
+30 silly addNameRange     '0.14.7',
+30 silly addNameRange     '0.15.0',
+30 silly addNameRange     '0.15.1',
+30 silly addNameRange     '0.15.2',
+30 silly addNameRange     '0.15.3',
+30 silly addNameRange     '0.15.4',
+30 silly addNameRange     '0.15.5',
+30 silly addNameRange     '0.15.6',
+30 silly addNameRange     '0.15.7',
+30 silly addNameRange     '0.15.8',
+30 silly addNameRange     '0.15.9',
+30 silly addNameRange     '0.15.10',
+30 silly addNameRange     '1.0.0',
+30 silly addNameRange     '1.0.1',
+30 silly addNameRange     '1.0.2',
+30 silly addNameRange     '1.1.1',
+30 silly addNameRange     '1.1.2',
+30 silly addNameRange     '1.1.3',
+30 silly addNameRange     '2.0.0',
+30 silly addNameRange     '2.0.1',
+30 silly addNameRange     '2.0.2',
+30 silly addNameRange     '2.0.3',
+30 silly addNameRange     '2.0.4',
+30 silly addNameRange     '2.0.5',
+30 silly addNameRange     '2.0.6',
+30 silly addNameRange     '2.0.7',
+30 silly addNameRange     '2.0.8',
+30 silly addNameRange     '2.0.9',
+30 silly addNameRange     '2.0.10',
+30 silly addNameRange     '2.0.12',
+30 silly addNameRange     '2.0.13',
+30 silly addNameRange     '2.0.14',
+30 silly addNameRange     '2.0.15',
+30 silly addNameRange     '2.0.16',
+30 silly addNameRange     '2.0.17',
+30 silly addNameRange     '2.0.18',
+30 silly addNameRange     '2.0.19',
+30 silly addNameRange     '2.1.0',
+30 silly addNameRange     '2.1.1',
+30 silly addNameRange     '2.1.2',
+30 silly addNameRange     '2.1.3',
+30 silly addNameRange     '2.1.4',
+30 silly addNameRange     '2.1.5',
+30 silly addNameRange     '2.1.6',
+30 silly addNameRange     '2.2.0',
+30 silly addNameRange     '2.2.1',
+30 silly addNameRange     '2.2.2',
+30 silly addNameRange     '2.2.3',
+30 silly addNameRange     '2.3.0-beta1',
+30 silly addNameRange     '2.3.0',
+30 silly addNameRange     '2.3.1-next',
+30 silly addNameRange     '2.4.0-beta1',
+30 silly addNameRange     '2.4.0-beta2',
+30 silly addNameRange     '2.4.0-beta3',
+30 silly addNameRange     '2.4.0-beta4',
+30 silly addNameRange     '2.4.0-beta5',
+30 silly addNameRange     '2.4.0',
+30 silly addNameRange     '2.4.1-beta1',
+30 silly addNameRange     '2.4.1-beta2',
+30 silly addNameRange     '2.4.1-beta3',
+30 silly addNameRange     '2.4.1-beta4',
+30 silly addNameRange     '2.4.1-beta5',
+30 silly addNameRange     '2.4.1',
+30 silly addNameRange     '2.4.2',
+30 silly addNameRange     '2.4.3-rc1',
+30 silly addNameRange     '2.4.3',
+30 silly addNameRange     '2.4.4',
+30 silly addNameRange     '2.4.5',
+30 silly addNameRange     '2.4.6',
+30 silly addNameRange     '2.5.0-beta1',
+30 silly addNameRange     '2.5.0',
+30 silly addNameRange     '2.6.0',
+30 silly addNameRange     '2.6.1',
+30 silly addNameRange     '2.7.0',
+30 silly addNameRange     '2.7.1',
+30 silly addNameRange     '2.7.2',
+30 silly addNameRange     '2.8.0',
+30 silly addNameRange     '2.8.0-next',
+30 silly addNameRange     '2.9.0',
+30 silly addNameRange     '2.9.1',
+30 silly addNameRange     '2.9.2-next',
+30 silly addNameRange     '2.9.2',
+30 silly addNameRange     '2.9.3',
+30 silly addNameRange     '2.10.0',
+30 silly addNameRange     '2.10.1',
+30 silly addNameRange     '2.10.2',
+30 silly addNameRange     '2.10.3',
+30 silly addNameRange     '2.10.4',
+30 silly addNameRange     '3.0.0',
+30 silly addNameRange     '3.0.1',
+30 silly addNameRange     '3.0.2',
+30 silly addNameRange     '3.0.3',
+30 silly addNameRange     '3.0.4',
+30 silly addNameRange     '3.1.0',
+30 silly addNameRange     '3.1.1',
+30 silly addNameRange     '3.1.2',
+30 silly addNameRange     '3.1.3',
+30 silly addNameRange     '3.2.0',
+30 silly addNameRange     '3.2.1',
+30 silly addNameRange     '3.2.2',
+30 silly addNameRange     '3.2.3',
+30 silly addNameRange     '3.2.4',
+30 silly addNameRange     '3.2.5',
+30 silly addNameRange     '3.2.6',
+30 silly addNameRange     '3.2.7',
+30 silly addNameRange     '3.2.8',
+30 silly addNameRange     '3.2.9',
+30 silly addNameRange     '3.3.0',
+30 silly addNameRange     '3.3.1',
+30 silly addNameRange     '3.4.0',
+30 silly addNameRange     '3.4.1',
+30 silly addNameRange     '3.5.0',
+30 silly addNameRange     '3.5.1',
+30 silly addNameRange     '4.0.0',
+30 silly addNameRange     '4.0.1',
+30 silly addNameRange     '4.0.2',
+30 silly addNameRange     '4.1.0',
+30 silly addNameRange     '4.1.1',
+30 silly addNameRange     '4.1.2' ] ]
+31 verbose addNamed [ 'pm2', '4.1.2' ]
+32 verbose addNamed [ '4.1.2', '4.1.2' ]
+33 silly lockFile bfc0bda0-pm2-4-1-2 pm2@4.1.2
+34 verbose lock pm2@4.1.2 /root/.npm/bfc0bda0-pm2-4-1-2.lock
+35 silly lockFile bfc0bda0-pm2-4-1-2 pm2@4.1.2
+36 silly lockFile bfc0bda0-pm2-4-1-2 pm2@4.1.2
+37 silly lockFile c9d1365e-pm2-4-0-1 pm2@^4.0.1
+38 silly lockFile c9d1365e-pm2-4-0-1 pm2@^4.0.1
+39 silly resolved [ { name: 'pm2',
+39 silly resolved     preferGlobal: true,
+39 silly resolved     version: '4.1.2',
+39 silly resolved     engines: { embed: '12.4.0', node: '>=8.0.0' },
+39 silly resolved     directories: { bin: './bin', lib: './lib', example: './examples' },
+39 silly resolved     author:
+39 silly resolved      { name: 'Strzelewicz Alexandre',
+39 silly resolved        email: 'alexandre@pm2.io',
+39 silly resolved        url: 'https://pm2.io' },
+39 silly resolved     maintainers: [ [Object], [Object] ],
+39 silly resolved     contributors:
+39 silly resolved      [ [Object],
+39 silly resolved        [Object],
+39 silly resolved        [Object],
+39 silly resolved        [Object],
+39 silly resolved        [Object],
+39 silly resolved        [Object],
+39 silly resolved        [Object],
+39 silly resolved        [Object],
+39 silly resolved        [Object],
+39 silly resolved        [Object],
+39 silly resolved        [Object],
+39 silly resolved        [Object],
+39 silly resolved        [Object],
+39 silly resolved        [Object],
+39 silly resolved        [Object],
+39 silly resolved        [Object] ],
+39 silly resolved     homepage: 'http://pm2.keymetrics.io/',
+39 silly resolved     description: 'Production process manager for Node.JS applications with a built-in load balancer.',
+39 silly resolved     main: 'index.js',
+39 silly resolved     types: 'types/index.d.ts',
+39 silly resolved     scripts: { test: 'bash test/unit.sh && bash test/e2e.sh' },
+39 silly resolved     keywords:
+39 silly resolved      [ 'cli',
+39 silly resolved        'fault tolerant',
+39 silly resolved        'sysadmin',
+39 silly resolved        'tools',
+39 silly resolved        'pm2',
+39 silly resolved        'logs',
+39 silly resolved        'log',
+39 silly resolved        'json',
+39 silly resolved        'express',
+39 silly resolved        'hapi',
+39 silly resolved        'kraken',
+39 silly resolved        'reload',
+39 silly resolved        'load balancer',
+39 silly resolved        'lb',
+39 silly resolved        'load-balancer',
+39 silly resolved        'kubernetes',
+39 silly resolved        'k8s',
+39 silly resolved        'pm2-docker',
+39 silly resolved        'runtime',
+39 silly resolved        'source maps',
+39 silly resolved        'graceful',
+39 silly resolved        'microservice',
+39 silly resolved        'programmatic',
+39 silly resolved        'harmony',
+39 silly resolved        'node-pm2',
+39 silly resolved        'production',
+39 silly resolved        'keymetrics',
+39 silly resolved        'node.js monitoring',
+39 silly resolved        'strong-pm',
+39 silly resolved        'deploy',
+39 silly resolved        'deployment',
+39 silly resolved        'daemon',
+39 silly resolved        'supervisor',
+39 silly resolved        'supervisord',
+39 silly resolved        'nodemon',
+39 silly resolved        'pm2.io',
+39 silly resolved        'ghost',
+39 silly resolved        'ghost production',
+39 silly resolved        'monitoring',
+39 silly resolved        'keymetrics',
+39 silly resolved        'process manager',
+39 silly resolved        'forever',
+39 silly resolved        'profiling',
+39 silly resolved        'probes',
+39 silly resolved        'apm',
+39 silly resolved        'container',
+39 silly resolved        'forever-monitor',
+39 silly resolved        'keep process alive',
+39 silly resolved        'process configuration',
+39 silly resolved        'clustering',
+39 silly resolved        'cluster cli',
+39 silly resolved        'cluster',
+39 silly resolved        'docker',
+39 silly resolved        'cron',
+39 silly resolved        'devops',
+39 silly resolved        'dev ops' ],
+39 silly resolved     bin:
+39 silly resolved      { pm2: './bin/pm2',
+39 silly resolved        'pm2-dev': './bin/pm2-dev',
+39 silly resolved        'pm2-docker': './bin/pm2-docker',
+39 silly resolved        'pm2-runtime': './bin/pm2-runtime' },
+39 silly resolved     dependencies:
+39 silly resolved      { '@pm2/agent': '^0.5.26',
+39 silly resolved        '@pm2/io': '^4.3.2',
+39 silly resolved        '@pm2/js-api': '^0.5.60',
+39 silly resolved        async: '^3.1.0',
+39 silly resolved        blessed: '0.1.81',
+39 silly resolved        chalk: '2.4.2',
+39 silly resolved        chokidar: '^3.2.0',
+39 silly resolved        'cli-table-redemption': '1.0.1',
+39 silly resolved        commander: '2.15.1',
+39 silly resolved        cron: '1.7.1',
+39 silly resolved        'date-fns': '1.30.1',
+39 silly resolved        debug: '4.1.1',
+39 silly resolved        eventemitter2: '5.0.1',
+39 silly resolved        fclone: '1.0.11',
+39 silly resolved        mkdirp: '0.5.1',
+39 silly resolved        moment: '2.24.0',
+39 silly resolved        needle: '2.4.0',
+39 silly resolved        pidusage: '2.0.17',
+39 silly resolved        'pm2-axon': '3.3.0',
+39 silly resolved        'pm2-axon-rpc': '0.5.1',
+39 silly resolved        'pm2-deploy': '^0.4.0',
+39 silly resolved        'pm2-multimeter': '^0.1.2',
+39 silly resolved        promptly: '^2',
+39 silly resolved        lodash: '4.17.14',
+39 silly resolved        'ps-list': '6.3.0',
+39 silly resolved        semver: '^5.5',
+39 silly resolved        shelljs: '0.8.3',
+39 silly resolved        'source-map-support': '0.5.12',
+39 silly resolved        'sprintf-js': '1.1.2',
+39 silly resolved        vizion: '~2.0.2',
+39 silly resolved        yamljs: '0.3.0',
+39 silly resolved        systeminformation: '^4.14.11' },
+39 silly resolved     devDependencies: { mocha: '^5.2.0', should: '^13' },
+39 silly resolved     optionalDependencies: { systeminformation: '^4.14.11' },
+39 silly resolved     bugs: { url: 'https://github.com/Unitech/pm2/issues' },
+39 silly resolved     repository: { type: 'git', url: 'git://github.com/Unitech/pm2.git' },
+39 silly resolved     license: 'AGPL-3.0',
+39 silly resolved     readme: '<div align="center">\n  <br/>\n  <a href="http://pm2.keymetrics.io/" title="PM2 Keymetrics link">\n    <img width=710px src="https://raw.githubusercontent.com/Unitech/pm2/development/pres/pm2-v4.png" alt="pm2 logo">\n  </a>\n  <br/>\n<br/>\n<b>P</b>(rocess) <b>M</b>(anager) <b>2</b><br/>\n  <i>Runtime Edition</i>\n<br/><br/>\n\n<a href="https://badge.fury.io/js/pm2" title="NPM Version Badge">\n   <img src="https://badge.fury.io/js/pm2.svg" alt="npm version">\n</a>\n\n<a href="https://img.shields.io/node/v/pm2.svg" title="Node Limitation">\n   <img src="https://img.shields.io/node/v/pm2.svg" alt="node version">\n</a>\n\n<a href="https://travis-ci.org/Unitech/pm2" title="PM2 Tests">\n  <img src="https://travis-ci.org/Unitech/pm2.svg?branch=master" alt="Build Status"/>\n</a>\n\n\n<br/>\n<br/>\n<br/>\n</div>\n\n\nPM2 is a production process manager for Node.js applications with a built-in load balancer. It allows you to keep applications alive forever, to reload them without downtime and to facilitate common system admin tasks.\n\nStarting an application in production mode is as easy as:\n\n```bash\n$ pm2 start app.js\n```\n\nPM2 is constantly assailed by [more than 1800 tests](https://travis-ci.org/Unitech/pm2).\n\nOfficial website: [https://pm2.keymetrics.io/](https://pm2.keymetrics.io/)\n\nWorks on Linux (stable) & macOS (stable) & Windows (stable). All Node.js versions are supported starting Node.js 8.X.\n\n[![NPM](https://nodei.co/npm/pm2.png?downloads=true&downloadRank=true)](https://nodei.co/npm/pm2/)\n\n### Installing PM2\n\nWith NPM:\n\n```bash\n$ npm install pm2 -g\n```\n\nOr if you don\'t have Node.js installed:\n\n```bash\nwget -qO- https://getpm2.com/install.sh | bash\n```\n\n### Start an application\n\nYou can start any application (Node.js, Python, Ruby, binaries in $PATH...) like that:\n\n```bash\n$ pm2 start app.js\n```\n\nYour app is now daemonized, monitored and kept alive forever.\n\n[More about Process Management](https://pm2.keymetrics.io/docs/usage/quick-start/)\n\n### Managing Applications\n\nOnce applications are started you can manage them easily:\n\n![Process listing](https://github.com/unitech/pm2/raw/master/pres/pm2-list.png)\n\nTo list all running applications:\n\n```bash\n$ pm2 list\n```\n\nManaging apps is straightforward:\n\n```bash\n$ pm2 stop     <app_name|id|\'all\'|json_conf>\n$ pm2 restart  <app_name|id|\'all\'|json_conf>\n$ pm2 delete   <app_name|id|\'all\'|json_conf>\n```\n\nTo have more details on a specific application:\n\n```bash\n$ pm2 describe <id|app_name>\n```\n\nTo monitor logs, custom metrics, application information:\n\n```bash\n$ pm2 monit\n```\n\n[More about Application Management](https://pm2.keymetrics.io/docs/usage/quick-start/)\n\n### Cluster Mode: Node.js Load Balancing & Zero Downtime Reload\n\nThe Cluster mode is a special mode when starting a Node.js application, it starts multiple processes and load-balance HTTP/TCP/UDP queries between them. This increase overall performance (by a factor of x10 on 16 cores machines) and reliability (faster socket re-balancing in case of unhandled errors).\n\nStarting a Node.js application in cluster mode that will leverage all CPUs available:\n\n```bash\n$ pm2 start api.js -i <processes>\n```\n\n`<processes>` can be `\'max\'`, `-1` (all cpu minus 1) or a specified number of instances to start.\n\n**Zero Downtime Reload**\n\nHot Reload allows to update an application without any downtime:\n\n```bash\n$ pm2 reload all\n```\n\nSeamlessly supported by all major Node.js frameworks and any Node.js applications without any code change:\n\n![Framework supported](https://raw.githubusercontent.com/Unitech/PM2/development/pres/cluster-support.png)\n\n[More informations about how PM2 make clustering easy](https://pm2.keymetrics.io/docs/usage/cluster-mode/)\n\n### Container Support\n\nWith the drop-in replacement command for `node`, called `pm2-runtime`, run your Node.js application in a hardened production environment.\nUsing it is seamless:\n\n```\nRUN npm install pm2 -g\nCMD [ "pm2-runtime", "npm", "--", "start" ]\n```\n\n[Read More about the dedicated integration](https://pm2.keymetrics.io/docs/usage/docker-pm2-nodejs/)\n\n### Terminal Based Monitoring\n\n![Monit](https://github.com/Unitech/pm2/raw/master/pres/pm2-monit.png)\n\nMonitor all processes launched straight from the command line:\n\n```bash\n$ pm2 monit\n```\n\n### Log Management\n\nTo consult logs just type the command:\n\n```bash\n$ pm2 logs\n```\n\nStandard, Raw, JSON and formated output are available.\n\nExamples:\n\n```bash\n$ pm2 logs APP-NAME       # Display APP-NAME logs\n$ pm2 logs --json         # JSON output\n$ pm2 logs --format       # Formated output\n\n$ pm2 flush               # Flush all logs\n$ pm2 reloadLogs          # Reload all logs\n```\n\n[More about log management](https://pm2.keymetrics.io/docs/usage/log-management/)\n\n### Startup Scripts Generation\n\nPM2 can generates and configure a Startup Script to keep PM2 and your processes alive at every server restart.\n\nInit Systems Supported: **systemd**, **upstart**, **launchd**, **rc.d**\n\n```bash\n# Generate Startup Script\n$ pm2 startup\n\n# Freeze your process list across server restart\n$ pm2 save\n\n# Remove Startup Script\n$ pm2 unstartup\n```\n\n[More about Startup Scripts Generation](https://pm2.keymetrics.io/docs/usage/startup/)\n\n### PM2 Modules\n\nPM2 embeds a simple and powerful module system. Installing a module is straightforward:\n\n```bash\n$ pm2 install <module_name>\n```\n\nHere are some PM2 compatible modules (standalone Node.js applications managed by PM2):\n\n[**pm2-logrotate**](https://www.npmjs.com/package/pm2-logrotate) automatically rotate logs and limit logs size<br/>\n[**pm2-server-monit**](https://www.npmjs.com/package/pm2-server-monit) monitor the current server with more than 20+ metrics and 8 actions<br/>\n\n### Updating PM2\n\n```bash\n# Install latest PM2 version\n$ npm install pm2@latest -g\n# Save process list, exit old PM2 & restore all processes\n$ pm2 update\n```\n\n*PM2 updates are seamless*\n\n## PM2+ Monitoring\n\nIf you manage your appa with PM2, PM2+ makes it easy to monitor and manage apps across servers.\nFeel free to try it:\n\n[Discover the monitoring dashboard for PM2](https://app.pm2.io/)\n\nThanks in advance and we hope that you like PM2!\n\n## CHANGELOG\n\n[CHANGELOG](https://github.com/Unitech/PM2/blob/master/CHANGELOG.md)\n\n## Contributors\n\n[Contributors](http://pm2.keymetrics.io/hall-of-fame/)\n\n## License\n\nPM2 is made available under the terms of the GNU Affero General Public License 3.0 (AGPL 3.0).\nFor other licenses [contact us](mailto:contact@keymetrics.io).\n',
+39 silly resolved     readmeFilename: 'README.md',
+39 silly resolved     _id: 'pm2@4.1.2',
+39 silly resolved     _from: 'pm2@^4.0.1' } ]
+40 info install pm2@4.1.2 into /home/centos/api_service
+41 info installOne pm2@4.1.2
+42 warn engine pm2@4.1.2: wanted: {"embed":"12.4.0","node":">=8.0.0"} (current: {"node":"v0.10.48","npm":"1.3.6"})
+43 info /home/centos/api_service/node_modules/pm2 unbuild
+44 verbose tar unpack /root/.npm/pm2/4.1.2/package.tgz
+45 silly lockFile 1c6c81d1-tos-api-service-node-modules-pm2 tar:///home/centos/api_service/node_modules/pm2
+46 verbose lock tar:///home/centos/api_service/node_modules/pm2 /root/.npm/1c6c81d1-tos-api-service-node-modules-pm2.lock
+47 silly lockFile fce9ea55-r-root-npm-pm2-4-1-2-package-tgz tar:///root/.npm/pm2/4.1.2/package.tgz
+48 verbose lock tar:///root/.npm/pm2/4.1.2/package.tgz /root/.npm/fce9ea55-r-root-npm-pm2-4-1-2-package-tgz.lock
+49 silly gunzTarPerm modes [ '755', '644' ]
+50 silly gunzTarPerm extractEntry package.json
+51 silly gunzTarPerm extractEntry README.md
+52 silly gunzTarPerm extractEntry LICENSE
+53 silly gunzTarPerm extractEntry constants.js
+54 silly gunzTarPerm extractEntry index.js
+55 silly gunzTarPerm extractEntry paths.js
+56 silly gunzTarPerm extractEntry changelogTemplate.md
+57 silly gunzTarPerm extractEntry .changelogrc
+58 silly gunzTarPerm extractEntry .gitattributes
+59 silly gunzTarPerm extractEntry bin/pm2
+60 silly gunzTarPerm extractEntry bin/pm2-dev
+61 silly gunzTarPerm extractEntry bin/pm2-docker
+62 silly gunzTarPerm extractEntry bin/pm2-runtime
+63 silly gunzTarPerm extractEntry .drone.yml
+64 silly gunzTarPerm extractEntry .travis.yml
+65 silly gunzTarPerm extractEntry e2e_time
+66 silly gunzTarPerm extractEntry CHANGELOG.md
+67 silly gunzTarPerm extractEntry lib/ProcessUtils.js
+68 silly gunzTarPerm extractEntry lib/Daemon.js
+69 silly gunzTarPerm extractEntry lib/Event.js
+70 silly gunzTarPerm extractEntry lib/God.js
+71 silly gunzTarPerm extractEntry lib/HttpInterface.js
+72 silly gunzTarPerm extractEntry lib/Configuration.js
+73 silly gunzTarPerm extractEntry lib/ProcessContainerFork.js
+74 silly gunzTarPerm extractEntry lib/API.js
+75 silly gunzTarPerm extractEntry lib/TreeKill.js
+76 silly gunzTarPerm extractEntry lib/Utility.js
+77 silly gunzTarPerm extractEntry lib/Watcher.js
+78 silly gunzTarPerm extractEntry lib/Common.js
+79 silly gunzTarPerm extractEntry lib/Worker.js
+80 silly gunzTarPerm extractEntry lib/Client.js
+81 silly gunzTarPerm extractEntry lib/completion.js
+82 silly gunzTarPerm extractEntry lib/ProcessContainer.js
+83 silly gunzTarPerm extractEntry lib/Sysinfo/MeanCalc.js
+84 silly gunzTarPerm extractEntry lib/Sysinfo/SystemInfo.js
+85 silly gunzTarPerm extractEntry lib/Sysinfo/psList.js
+86 silly gunzTarPerm extractEntry lib/Sysinfo/test.js
+87 silly gunzTarPerm extractEntry lib/Sysinfo/ServiceDetection/ServiceDetection.js
+88 silly gunzTarPerm extractEntry lib/Sysinfo/fastlist.exe
+89 silly gunzTarPerm extractEntry lib/God/ActionMethods.js
+90 silly gunzTarPerm extractEntry lib/God/ClusterMode.js
+91 silly gunzTarPerm extractEntry lib/God/ForkMode.js
+92 silly gunzTarPerm extractEntry lib/God/Methods.js
+93 silly gunzTarPerm extractEntry lib/God/Reload.js
+94 silly gunzTarPerm extractEntry lib/binaries/CLI.js
+95 silly gunzTarPerm extractEntry lib/binaries/DevCLI.js
+96 silly gunzTarPerm extractEntry lib/binaries/Runtime.js
+97 silly gunzTarPerm extractEntry lib/binaries/Runtime4Docker.js
+98 silly gunzTarPerm extractEntry lib/API/CliUx.js
+99 silly gunzTarPerm extractEntry lib/API/Deploy.js
+100 silly gunzTarPerm extractEntry lib/API/Extra.js
+101 silly gunzTarPerm extractEntry lib/API/Log.js
+102 silly gunzTarPerm extractEntry lib/API/Dashboard.js
+103 silly gunzTarPerm extractEntry lib/API/Configuration.js
+104 silly gunzTarPerm extractEntry lib/API/Monit.js
+105 silly gunzTarPerm extractEntry lib/API/Serve.js
+106 silly gunzTarPerm extractEntry lib/API/Spinner.js
+107 silly gunzTarPerm extractEntry lib/API/Startup.js
+108 silly gunzTarPerm extractEntry lib/API/Containerizer.js
+109 silly gunzTarPerm extractEntry lib/API/Version.js
+110 silly gunzTarPerm extractEntry lib/API/LogManagement.js
+111 silly gunzTarPerm extractEntry lib/API/schema.json
+112 silly gunzTarPerm extractEntry lib/API/ExtraMgmt/Docker.js
+113 silly gunzTarPerm extractEntry lib/API/interpreter.json
+114 silly gunzTarPerm extractEntry lib/API/pm2-plus/PM2IO.js
+115 silly gunzTarPerm extractEntry lib/API/pm2-plus/helpers.js
+116 silly gunzTarPerm extractEntry lib/API/pm2-plus/link.js
+117 silly gunzTarPerm extractEntry lib/API/pm2-plus/process-selector.js
+118 silly gunzTarPerm extractEntry lib/API/pm2-plus/auth-strategies/CliAuth.js
+119 silly gunzTarPerm extractEntry lib/API/pm2-plus/auth-strategies/WebAuth.js
+120 silly gunzTarPerm extractEntry lib/API/pm2-plus/pres/motd
+121 silly gunzTarPerm extractEntry lib/API/pm2-plus/pres/motd.update
+122 silly gunzTarPerm extractEntry lib/API/pm2-plus/pres/welcome
+123 silly gunzTarPerm extractEntry lib/API/Modules/HTTP.js
+124 silly gunzTarPerm extractEntry lib/API/Modules/LOCAL.js
+125 silly gunzTarPerm extractEntry lib/API/Modules/Modularizer.js
+126 silly gunzTarPerm extractEntry lib/API/Modules/NPM.js
+127 silly gunzTarPerm extractEntry lib/API/Modules/TAR.js
+128 silly gunzTarPerm extractEntry lib/API/Modules/flagExt.js
+129 silly gunzTarPerm extractEntry lib/API/Modules/index.js
+130 silly gunzTarPerm extractEntry lib/completion.sh
+131 silly gunzTarPerm extractEntry lib/motd
+132 silly gunzTarPerm extractEntry lib/templates/Dockerfiles/Dockerfile-java.tpl
+133 silly gunzTarPerm extractEntry lib/templates/Dockerfiles/Dockerfile-nodejs.tpl
+134 silly gunzTarPerm extractEntry lib/templates/Dockerfiles/Dockerfile-ruby.tpl
+135 silly gunzTarPerm extractEntry lib/templates/ecosystem-simple.tpl
+136 silly gunzTarPerm extractEntry lib/templates/ecosystem.tpl
+137 silly gunzTarPerm extractEntry lib/templates/init-scripts/launchd.tpl
+138 silly gunzTarPerm extractEntry lib/templates/init-scripts/openrc.tpl
+139 silly gunzTarPerm extractEntry lib/templates/init-scripts/pm2-init-amazon.sh
+140 silly gunzTarPerm extractEntry lib/templates/init-scripts/rcd-openbsd.tpl
+141 silly gunzTarPerm extractEntry lib/templates/init-scripts/rcd.tpl
+142 silly gunzTarPerm extractEntry lib/templates/init-scripts/smf.tpl
+143 silly gunzTarPerm extractEntry lib/templates/init-scripts/systemd-online.tpl
+144 silly gunzTarPerm extractEntry lib/templates/init-scripts/systemd.tpl
+145 silly gunzTarPerm extractEntry lib/templates/init-scripts/upstart.tpl
+146 silly gunzTarPerm extractEntry lib/templates/logrotate.d/pm2
+147 silly gunzTarPerm extractEntry lib/tools/Config.js
+148 silly gunzTarPerm extractEntry lib/tools/IsAbsolute.js
+149 silly gunzTarPerm extractEntry lib/tools/find-package-json.js
+150 silly gunzTarPerm extractEntry lib/tools/fmt.js
+151 silly gunzTarPerm extractEntry lib/tools/isbinaryfile.js
+152 silly gunzTarPerm extractEntry lib/tools/json5.js
+153 silly gunzTarPerm extractEntry lib/tools/open.js
+154 silly gunzTarPerm extractEntry lib/tools/passwd.js
+155 silly gunzTarPerm extractEntry lib/tools/promise.min.js
+156 silly gunzTarPerm extractEntry lib/tools/xdg-open
+157 silly gunzTarPerm extractEntry CONTRIBUTING.md
+158 silly gunzTarPerm extractEntry GNU-AGPL-3.0.txt
+159 silly gunzTarPerm extractEntry pm2
+160 silly gunzTarPerm extractEntry types/index.d.ts
+161 silly gunzTarPerm extractEntry types/tsconfig.json
+162 silly gunzTarPerm extractEntry unit_time
+163 silly lockFile 1c6c81d1-tos-api-service-node-modules-pm2 tar:///home/centos/api_service/node_modules/pm2
+164 silly lockFile 1c6c81d1-tos-api-service-node-modules-pm2 tar:///home/centos/api_service/node_modules/pm2
+165 silly lockFile fce9ea55-r-root-npm-pm2-4-1-2-package-tgz tar:///root/.npm/pm2/4.1.2/package.tgz
+166 silly lockFile fce9ea55-r-root-npm-pm2-4-1-2-package-tgz tar:///root/.npm/pm2/4.1.2/package.tgz
+167 info preinstall pm2@4.1.2
+168 verbose readDependencies using package.json deps
+169 verbose readDependencies using package.json deps
+170 verbose cache add [ '@pm2/agent@^0.5.26', null ]
+171 verbose cache add name=undefined spec="@pm2/agent@^0.5.26" args=["@pm2/agent@^0.5.26",null]
+172 verbose parsed url { protocol: null,
+172 verbose parsed url   slashes: null,
+172 verbose parsed url   auth: null,
+172 verbose parsed url   host: null,
+172 verbose parsed url   port: null,
+172 verbose parsed url   hostname: null,
+172 verbose parsed url   hash: null,
+172 verbose parsed url   search: null,
+172 verbose parsed url   query: null,
+172 verbose parsed url   pathname: '@pm2/agent@^0.5.26',
+172 verbose parsed url   path: '@pm2/agent@^0.5.26',
+172 verbose parsed url   href: '@pm2/agent@^0.5.26' }
+173 verbose cache add name="" spec="pm2/agent@^0.5.26" args=["","pm2/agent@^0.5.26"]
+174 verbose parsed url { protocol: null,
+174 verbose parsed url   slashes: null,
+174 verbose parsed url   auth: null,
+174 verbose parsed url   host: null,
+174 verbose parsed url   port: null,
+174 verbose parsed url   hostname: null,
+174 verbose parsed url   hash: null,
+174 verbose parsed url   search: null,
+174 verbose parsed url   query: null,
+174 verbose parsed url   pathname: 'pm2/agent@^0.5.26',
+174 verbose parsed url   path: 'pm2/agent@^0.5.26',
+174 verbose parsed url   href: 'pm2/agent@^0.5.26' }
+175 verbose cache add name="pm2/agent" spec="^0.5.26" args=["pm2/agent","^0.5.26"]
+176 verbose parsed url { protocol: null,
+176 verbose parsed url   slashes: null,
+176 verbose parsed url   auth: null,
+176 verbose parsed url   host: null,
+176 verbose parsed url   port: null,
+176 verbose parsed url   hostname: null,
+176 verbose parsed url   hash: null,
+176 verbose parsed url   search: null,
+176 verbose parsed url   query: null,
+176 verbose parsed url   pathname: '^0.5.26',
+176 verbose parsed url   path: '^0.5.26',
+176 verbose parsed url   href: '^0.5.26' }
+177 verbose addNamed [ 'pm2/agent', '^0.5.26' ]
+178 verbose addNamed [ null, '>=0.5.26-0 <0.6.0-0' ]
+179 silly lockFile fe8900cc-pm2-agent-0-5-26 pm2/agent@^0.5.26
+180 verbose lock pm2/agent@^0.5.26 /root/.npm/fe8900cc-pm2-agent-0-5-26.lock
+181 verbose cache add [ '@pm2/io@^4.3.2', null ]
+182 verbose cache add name=undefined spec="@pm2/io@^4.3.2" args=["@pm2/io@^4.3.2",null]
+183 verbose parsed url { protocol: null,
+183 verbose parsed url   slashes: null,
+183 verbose parsed url   auth: null,
+183 verbose parsed url   host: null,
+183 verbose parsed url   port: null,
+183 verbose parsed url   hostname: null,
+183 verbose parsed url   hash: null,
+183 verbose parsed url   search: null,
+183 verbose parsed url   query: null,
+183 verbose parsed url   pathname: '@pm2/io@^4.3.2',
+183 verbose parsed url   path: '@pm2/io@^4.3.2',
+183 verbose parsed url   href: '@pm2/io@^4.3.2' }
+184 verbose cache add name="" spec="pm2/io@^4.3.2" args=["","pm2/io@^4.3.2"]
+185 verbose parsed url { protocol: null,
+185 verbose parsed url   slashes: null,
+185 verbose parsed url   auth: null,
+185 verbose parsed url   host: null,
+185 verbose parsed url   port: null,
+185 verbose parsed url   hostname: null,
+185 verbose parsed url   hash: null,
+185 verbose parsed url   search: null,
+185 verbose parsed url   query: null,
+185 verbose parsed url   pathname: 'pm2/io@^4.3.2',
+185 verbose parsed url   path: 'pm2/io@^4.3.2',
+185 verbose parsed url   href: 'pm2/io@^4.3.2' }
+186 verbose cache add name="pm2/io" spec="^4.3.2" args=["pm2/io","^4.3.2"]
+187 verbose parsed url { protocol: null,
+187 verbose parsed url   slashes: null,
+187 verbose parsed url   auth: null,
+187 verbose parsed url   host: null,
+187 verbose parsed url   port: null,
+187 verbose parsed url   hostname: null,
+187 verbose parsed url   hash: null,
+187 verbose parsed url   search: null,
+187 verbose parsed url   query: null,
+187 verbose parsed url   pathname: '^4.3.2',
+187 verbose parsed url   path: '^4.3.2',
+187 verbose parsed url   href: '^4.3.2' }
+188 verbose addNamed [ 'pm2/io', '^4.3.2' ]
+189 verbose addNamed [ null, '>=4.3.2-0 <5.0.0-0' ]
+190 silly lockFile 72949dde-pm2-io-4-3-2 pm2/io@^4.3.2
+191 verbose lock pm2/io@^4.3.2 /root/.npm/72949dde-pm2-io-4-3-2.lock
+192 verbose cache add [ '@pm2/js-api@^0.5.60', null ]
+193 verbose cache add name=undefined spec="@pm2/js-api@^0.5.60" args=["@pm2/js-api@^0.5.60",null]
+194 verbose parsed url { protocol: null,
+194 verbose parsed url   slashes: null,
+194 verbose parsed url   auth: null,
+194 verbose parsed url   host: null,
+194 verbose parsed url   port: null,
+194 verbose parsed url   hostname: null,
+194 verbose parsed url   hash: null,
+194 verbose parsed url   search: null,
+194 verbose parsed url   query: null,
+194 verbose parsed url   pathname: '@pm2/js-api@^0.5.60',
+194 verbose parsed url   path: '@pm2/js-api@^0.5.60',
+194 verbose parsed url   href: '@pm2/js-api@^0.5.60' }
+195 verbose cache add name="" spec="pm2/js-api@^0.5.60" args=["","pm2/js-api@^0.5.60"]
+196 verbose parsed url { protocol: null,
+196 verbose parsed url   slashes: null,
+196 verbose parsed url   auth: null,
+196 verbose parsed url   host: null,
+196 verbose parsed url   port: null,
+196 verbose parsed url   hostname: null,
+196 verbose parsed url   hash: null,
+196 verbose parsed url   search: null,
+196 verbose parsed url   query: null,
+196 verbose parsed url   pathname: 'pm2/js-api@^0.5.60',
+196 verbose parsed url   path: 'pm2/js-api@^0.5.60',
+196 verbose parsed url   href: 'pm2/js-api@^0.5.60' }
+197 verbose cache add name="pm2/js-api" spec="^0.5.60" args=["pm2/js-api","^0.5.60"]
+198 verbose parsed url { protocol: null,
+198 verbose parsed url   slashes: null,
+198 verbose parsed url   auth: null,
+198 verbose parsed url   host: null,
+198 verbose parsed url   port: null,
+198 verbose parsed url   hostname: null,
+198 verbose parsed url   hash: null,
+198 verbose parsed url   search: null,
+198 verbose parsed url   query: null,
+198 verbose parsed url   pathname: '^0.5.60',
+198 verbose parsed url   path: '^0.5.60',
+198 verbose parsed url   href: '^0.5.60' }
+199 verbose addNamed [ 'pm2/js-api', '^0.5.60' ]
+200 verbose addNamed [ null, '>=0.5.60-0 <0.6.0-0' ]
+201 silly lockFile ad554288-pm2-js-api-0-5-60 pm2/js-api@^0.5.60
+202 verbose lock pm2/js-api@^0.5.60 /root/.npm/ad554288-pm2-js-api-0-5-60.lock
+203 silly addNameRange { name: 'pm2/agent',
+203 silly addNameRange   range: '>=0.5.26-0 <0.6.0-0',
+203 silly addNameRange   hasData: false }
+204 verbose cache add [ 'debug@4.1.1', null ]
+205 verbose cache add name=undefined spec="debug@4.1.1" args=["debug@4.1.1",null]
+206 verbose parsed url { protocol: null,
+206 verbose parsed url   slashes: null,
+206 verbose parsed url   auth: null,
+206 verbose parsed url   host: null,
+206 verbose parsed url   port: null,
+206 verbose parsed url   hostname: null,
+206 verbose parsed url   hash: null,
+206 verbose parsed url   search: null,
+206 verbose parsed url   query: null,
+206 verbose parsed url   pathname: 'debug@4.1.1',
+206 verbose parsed url   path: 'debug@4.1.1',
+206 verbose parsed url   href: 'debug@4.1.1' }
+207 verbose cache add name="debug" spec="4.1.1" args=["debug","4.1.1"]
+208 verbose parsed url { protocol: null,
+208 verbose parsed url   slashes: null,
+208 verbose parsed url   auth: null,
+208 verbose parsed url   host: null,
+208 verbose parsed url   port: null,
+208 verbose parsed url   hostname: null,
+208 verbose parsed url   hash: null,
+208 verbose parsed url   search: null,
+208 verbose parsed url   query: null,
+208 verbose parsed url   pathname: '4.1.1',
+208 verbose parsed url   path: '4.1.1',
+208 verbose parsed url   href: '4.1.1' }
+209 verbose addNamed [ 'debug', '4.1.1' ]
+210 verbose addNamed [ '4.1.1', '4.1.1' ]
+211 silly lockFile cfdf5a13-debug-4-1-1 debug@4.1.1
+212 verbose lock debug@4.1.1 /root/.npm/cfdf5a13-debug-4-1-1.lock
+213 silly addNameRange { name: 'pm2/io', range: '>=4.3.2-0 <5.0.0-0', hasData: false }
+214 verbose url raw pm2/agent
+215 verbose url resolving [ 'http://registry.npmjs.org/', './pm2/agent' ]
+216 verbose url resolved http://registry.npmjs.org/pm2/agent
+217 info trying registry request attempt 1 at 10:50:14
+218 http GET http://registry.npmjs.org/pm2/agent
+219 silly addNameRange { name: 'pm2/js-api',
+219 silly addNameRange   range: '>=0.5.60-0 <0.6.0-0',
+219 silly addNameRange   hasData: false }
+220 verbose cache add [ 'lodash@4.17.14', null ]
+221 verbose cache add name=undefined spec="lodash@4.17.14" args=["lodash@4.17.14",null]
+222 verbose parsed url { protocol: null,
+222 verbose parsed url   slashes: null,
+222 verbose parsed url   auth: null,
+222 verbose parsed url   host: null,
+222 verbose parsed url   port: null,
+222 verbose parsed url   hostname: null,
+222 verbose parsed url   hash: null,
+222 verbose parsed url   search: null,
+222 verbose parsed url   query: null,
+222 verbose parsed url   pathname: 'lodash@4.17.14',
+222 verbose parsed url   path: 'lodash@4.17.14',
+222 verbose parsed url   href: 'lodash@4.17.14' }
+223 verbose cache add name="lodash" spec="4.17.14" args=["lodash","4.17.14"]
+224 verbose parsed url { protocol: null,
+224 verbose parsed url   slashes: null,
+224 verbose parsed url   auth: null,
+224 verbose parsed url   host: null,
+224 verbose parsed url   port: null,
+224 verbose parsed url   hostname: null,
+224 verbose parsed url   hash: null,
+224 verbose parsed url   search: null,
+224 verbose parsed url   query: null,
+224 verbose parsed url   pathname: '4.17.14',
+224 verbose parsed url   path: '4.17.14',
+224 verbose parsed url   href: '4.17.14' }
+225 verbose addNamed [ 'lodash', '4.17.14' ]
+226 verbose addNamed [ '4.17.14', '4.17.14' ]
+227 silly lockFile 489aea8f-lodash-4-17-14 lodash@4.17.14
+228 verbose lock lodash@4.17.14 /root/.npm/489aea8f-lodash-4-17-14.lock
+229 verbose url raw pm2/io
+230 verbose url resolving [ 'http://registry.npmjs.org/', './pm2/io' ]
+231 verbose url resolved http://registry.npmjs.org/pm2/io
+232 info trying registry request attempt 1 at 10:50:14
+233 http GET http://registry.npmjs.org/pm2/io
+234 verbose url raw pm2/js-api
+235 verbose url resolving [ 'http://registry.npmjs.org/', './pm2/js-api' ]
+236 verbose url resolved http://registry.npmjs.org/pm2/js-api
+237 info trying registry request attempt 1 at 10:50:14
+238 http GET http://registry.npmjs.org/pm2/js-api
+239 verbose url raw debug/4.1.1
+240 verbose url resolving [ 'http://registry.npmjs.org/', './debug/4.1.1' ]
+241 verbose url resolved http://registry.npmjs.org/debug/4.1.1
+242 info trying registry request attempt 1 at 10:50:14
+243 http GET http://registry.npmjs.org/debug/4.1.1
+244 verbose url raw lodash/4.17.14
+245 verbose url resolving [ 'http://registry.npmjs.org/', './lodash/4.17.14' ]
+246 verbose url resolved http://registry.npmjs.org/lodash/4.17.14
+247 info trying registry request attempt 1 at 10:50:14
+248 http GET http://registry.npmjs.org/lodash/4.17.14
+249 http 405 http://registry.npmjs.org/pm2/js-api
+250 silly registry.get cb [ 405,
+250 silly registry.get   { date: 'Wed, 23 Oct 2019 01:50:15 GMT',
+250 silly registry.get     'content-type': 'application/json',
+250 silly registry.get     'content-length': '63',
+250 silly registry.get     connection: 'keep-alive',
+250 silly registry.get     'set-cookie': [ '__cfduid=d73af1c921fdf2753565ce9a95628e82d1571795414; expires=Thu, 22-Oct-20 01:50:14 GMT; path=/; domain=.npmjs.org; HttpOnly' ],
+250 silly registry.get     'cf-cache-status': 'DYNAMIC',
+250 silly registry.get     'cf-ray': '52a00f1eeae0a164-ICN',
+250 silly registry.get     allow: 'PUT',
+250 silly registry.get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+250 silly registry.get     vary: 'Accept-Encoding',
+250 silly registry.get     server: 'cloudflare' } ]
+251 silly addNameRange number 2 { name: 'pm2/js-api',
+251 silly addNameRange   range: '>=0.5.60-0 <0.6.0-0',
+251 silly addNameRange   hasData: true }
+252 silly addNameRange versions [ undefined, [] ]
+253 error TypeError: Cannot read property 'latest' of undefined
+253 error     at next (/usr/lib/node_modules/npm/lib/cache.js:687:35)
+253 error     at /usr/lib/node_modules/npm/lib/cache.js:675:5
+253 error     at saved (/usr/lib/node_modules/npm-registry-client/lib/get.js:148:7)
+253 error     at /usr/lib/node_modules/graceful-fs/polyfills.js:133:7
+253 error     at Object.oncomplete (fs.js:108:15)
+254 error If you need help, you may report this log at:
+254 error     <http://github.com/isaacs/npm/issues>
+254 error or email it to:
+254 error     <npm-@googlegroups.com>
+255 error System Linux 2.6.32-754.14.2.el6.x86_64
+256 error command "node" "/usr/bin/npm" "install" "pm2"
+257 error cwd /home/centos/api_service
+258 error node -v v0.10.48
+259 error npm -v 1.3.6
+260 error type non_object_property_load
+261 verbose exit [ 1, true ]

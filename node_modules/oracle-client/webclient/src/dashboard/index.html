@@ -1,0 +1,15 @@
+<div class="dashboard">
+  <button ng-click="vm.disconnect()">Disconnect</button>
+
+  <section class="command">
+    <textarea ng-model="vm.sql"></textarea>
+    <button ng-click="vm.execute()">Send</button>
+  </section>
+
+  <section class="result">
+    <article ng-repeat="result in vm.results">
+      <button ng-click="vm.removeResult(result)">Delete</button>
+      <db-result sql="result.sql" rows="result.rows" />
+    </article>
+  </section>
+</div>

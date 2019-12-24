@@ -1,0 +1,16 @@
+{
+  "dev": {
+    "app_server_default_port" : "10000",
+    "elasticsearch_host"      : ["localhost:9200"],
+    "elasticsearch_timeout"   : 100000,
+    "use_cluster"             : false
+  },
+  "live" : {
+    "app_server_default_port": "10000",
+    "username": "",
+    "password": "",
+    "elasticsearch_host": "",
+    "elasticsearch_timeout": 10000
+  }
+
+}
