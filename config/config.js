@@ -1,5 +1,5 @@
 /**
- * Created by ibricks on 2017-10-11.
+ * Created by i-bricks on 2017-10-11.
  */
 var approot = require('app-root-path');
 

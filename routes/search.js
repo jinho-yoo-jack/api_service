@@ -1,83 +1,45 @@
 /**
- * Created by ibricks on 2019-10-14.
+ * Created by i-bricks on 2019-12-26.
  */
-// approot
-let approot = require('app-root-path');
-
-// express
-let app = require('express')();
-let validator = require('express-validator');
-
-// response
-let res_ok = require(approot + '/lib/res_ok');
-let res_err = require(approot + '/lib/res_err');
-
-// elasticsearch
-let elasticsearch = require(approot + '/models/elasticsearch');
-
-// config
-let config = require(approot + '/config/config');
-
-// moment
-let moment = require('moment');
-
-// md5
-let md5 = require('md5');
-
-let bodyParser = require('body-parser');
-
-// fs
-let fs = require('fs');
-
-//http
-let http = require('http');
-//request
-let request = require('request');
+const approot       = require('app-root-path');
+const app           = require('express')();
+const validator     = require('express-validator');
+const res_ok        = require(approot + '/lib/res_ok');
+const res_err       = require(approot + '/lib/res_err');
+const elasticsearch = require(approot + '/models/elasticsearch');
+const config        = require(approot + '/config/config');
+const moment        = require('moment');
+const md5           = require('md5');
+const bodyParser    = require('body-parser');
+const fs            = require('fs');
+const request       = require('request');
 
 // req validator
 app.use(validator());
-
 app.use(bodyParser.urlencoded({extended: false}));
 
+// ### Routing ###
 // http://.../
 app.all('/', function (req, res, next) {
     console.log("start");
     res.status(403).send();
 });
 
-/*
-	팟케스트 검색
- */
-app.all('/cast', function (req, res, next) {
-    console.log("cast search START");
+/* I/F ID : SEARCH-0001  */
+app.all('/totalsearch', function (req, res, next) {
+    console.log("Total search START");
+    console.log(req.body);
     let s_body = {};
-    let q = req.body['q'] || req.query['q'] || '';
-    let start = req.body['start'] || req.query['start'] || 1;
-    let size = req.body['size'] || req.query['size'] || 20;
-    let sort = req.body['sort'] || req.query['sort'] || "last_release_date+desc";
-    let filter_last_release_date = req.body['filter.last_release_date'] || req.query['filter.last_release_date'] ||
-        "[2010-01-01T00:00:00,2030-01-01T00:00:00]";
-    let q_option = req.body['q_option'] || req.query['q_option'] || "and,default_idx";
-    let return_fields = req.body['return'] || req.query['return'] || "msrl,+cast_srl,+cast_name,+artist_name," +
-        "+last_release_date,+release_date,+track_cnt,+search_word,+crt_dt";
-    let arr_return_fields = [];
-    let arr_filter_last_release_date = [];
-    let arr_sort = [];
+    let q      = req.body['keyword'] || req.query['keyword'] || '';
+    let start  = req.body['start']   || req.query['start']   || 1;
+    let size   = req.body['size']    || req.query['size']    || 0;
+    let score  = req.body['sort']    || req.query['sort']    || "_score";
+    let order  = req.body['order']   || req.query['order']   || "desc";
 
-    if (return_fields != null) {
-        arr_return_fields = replace_split(return_fields);
-    }
-    if (filter_last_release_date != null) {
-        arr_filter_last_release_date = replace_split(filter_last_release_date);
-    }
-    if (sort != null) {
-        arr_sort = replace_split_plus(sort);
-    }
-
-    let body = {};
+    let body    = {};
     let elapsed = {};
 
-    var wf_search = function () {
+    let wf_search = function () {
         var requery = {
             "bool": {
                 "must": []
@@ -98,7 +60,8 @@ app.all('/cast', function (req, res, next) {
 
         if (q != '') {
             var search_word = q.replace(/\//g, '\\/');
-            requery.bool.must.push({ // requery.bool.must.push START
+            // requery.bool.must.push START
+            requery.bool.must.push({
                 "bool": {
                     "should": [
                         {
@@ -265,7 +228,7 @@ app.all('/cast', function (req, res, next) {
     Promise
         .all([wf_search()])
         .then(sendresult)
-        .catch(errhandler);
+        .catch(errhandler);*/
 });
 
 /*
@@ -278,11 +241,11 @@ app.all('/episode', function (req, res, next) {
     let start = req.body['start'] || req.query['start'] || 1;
     let size = req.body['size'] || req.query['size'] || 20;
     let sort = req.body['sort'] || req.query['sort'] || "last_release_date+desc";
-    let filter_last_release_date = req.body['filter.last_release_date'] || req.query['filter.last_release_date'] ||
-        "[2010-01-01T00:00:00,2030-01-01T00:00:00]";
+    let filter_last_release_date = req.body['filter.last_release_date'] ||
+        req.query['filter.last_release_date'] || "[2010-01-01T00:00:00,2030-01-01T00:00:00]";
     let q_option = req.body['q_option'] || req.query['q_option'] || "and,default_idx";
-    let return_fields = req.body['return'] || req.query['return'] || "msrl,+cast_srl,+episode_srl,+item_title," +
-        "+item_pub_date,+crt_dt";
+    let return_fields = req.body['return'] || req.query['return'] ||
+        "msrl,+cast_srl,+episode_srl,+item_title," + "+item_pub_date,+crt_dt";
     let arr_return_fields = [];
     let arr_filter_last_release_date = [];
 
@@ -301,11 +264,12 @@ app.all('/episode', function (req, res, next) {
             "bool": {
                 "must": []
             }
-        }
+        };
 
         if (q != '') {
             var search_word = q.replace(/\//g, '\\/');
-            requery.bool.must.push({ // requery.bool.must.push START
+            requery.bool.must.push({
+                // requery.bool.must.push START
                 "bool": {
                     "should": [
                         {
@@ -314,10 +278,10 @@ app.all('/episode', function (req, res, next) {
                                     "item_author.keyword",
                                     "item_title.keyword"
                                 ],
-                                "query": search_word,
-                                "type": "cross_fields",
-                                "analyzer": "keyword_analyzer",
-                                "operator": "and"
+                                "query"    : search_word,
+                                "type"     : "cross_fields",
+                                "analyzer" : "keyword_analyzer",
+                                "operator" : "and"
                             }
                         },
                         {
