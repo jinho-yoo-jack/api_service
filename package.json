@@ -35,7 +35,7 @@
     "redis": "^2.8.0",
     "request": "^2.79.0",
     "request-promise": "^4.1.1",
-    "sequelize": "^3.30.0",
+    "sequelize": "^5.15.1",
     "striptags": "^3.0.1",
     "url": "^0.11.0",
     "webp-converter": "^2.1.6"
