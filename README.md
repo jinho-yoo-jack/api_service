@@ -100,7 +100,40 @@ zookeeper.connection.timeout.ms=6000
 
 ## zookeeper Config 설정
 1. 위치 : kafka설치경로/config/zookeeper.properties
-
+2. 설정
+```sh
+# zookeeper 데이터 위치, 원하는 경로에 저장입력.
+dataDir=/var/zookeeper
+ 
+# 하나의 클라이언트에서 동시접속하는 개수 제한, 기본값은 60이며, 0은 무제한
+maxClientCnxns=0
+    
+# zookeeper port
+clientPort=2181
+ 
+# 멀티 서버 설정
+# 2888은 각각의 zoopkeeper 간의 통신을 위해서 사용
+# 3888은 Leader 선출을 위해서 사용
+# server.id=host:port:port
+server.1=localhost:2888:3888
+# server.2=server_host_1:2888:3888
+# server.3=server_host_2:2888:3888
+ 
+# 멀티 서버 설정시 각 서버의 dataDir 밑에 myid 파일이 있어야함.
+# server.1,server.2,server.3 의 숫자는 /var/zookeeper1/myid의 값과 동일해야된다.
+# server.1에서 echo 1 > myid
+# server.2에서 echo 2 > myid
+# server.3에서 echo 3 > myid
+ 
+# 리더 서버에 연결해서 동기화하는 시간, [멀티서버옵션]
+#initLimit=5
+ 
+# 리더 서버를 제외한 노드 서버가 리더와 동기화하는 시간, [멀티서버옵션]
+#syncLimit=2
+ 
+# 토픽을 삭제할 수 있도록 설정
+delete.topic.enable=true
+```
 ## Kafka(Broker) 실행
 1. CMD : bin/kafka-server-start.sh config/server.properties
 
