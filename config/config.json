@@ -1,16 +1,21 @@
 {
+  "run_mode": "local",
+  "local": {
+    "app_server_default_port" : "10000",
+    "ELASTIC_HOST"            : ["localhost:9200"],
+    "ELASTIC_TIMEOUT"         : 100000,
+    "CLUSTER_STATUS"          : false
+  },
   "dev": {
     "app_server_default_port" : "10000",
-    "elasticsearch_host"      : ["localhost:9200"],
-    "elasticsearch_timeout"   : 100000,
-    "use_cluster"             : false
+    "ELASTIC_HOST"            : ["localhost:9200"],
+    "ELASTIC_TIMEOUT"         : 100000,
+    "CLUSTER_STATUS"          : false
   },
-  "live" : {
-    "app_server_default_port": "10000",
-    "username": "",
-    "password": "",
-    "elasticsearch_host": "",
-    "elasticsearch_timeout": 10000
+  "ops" : {
+    "app_server_default_port" : "10000",
+    "ELASTIC_HOST"            : ["192.168.0.40:9200","192.168.0.51:9200","192.168.0.52:9200"],
+    "ELASTIC_TIMEOUT"         : 10000
   }
 
 }

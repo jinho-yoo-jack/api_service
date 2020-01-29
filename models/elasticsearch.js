@@ -1,22 +1,12 @@
-const approot = require('app-root-path');
-const config  = require(approot + '/config/config');
-
-// elasticsearch
+/* Elasticsearch API Object Module */
+const rootpath       = require('app-root-path');
 const elasticsearch  = require('elasticsearch');
+const config         = require(`${rootpath}`+'/config/config');
 
-const elasticsearch_Client_1 = new elasticsearch.Client({
-    host: ["localhost:9200"],
-    requestTimeout: 1600000
+const elasticsearch_Client = new elasticsearch.Client({
+    host: config.ELASTIC_HOST,
+    requestTimeout: config.ELASTIC_TIMEOUT
 });
 
-const elasticsearch_Client_2 = new elasticsearch.Client({
-    host: ["192.168.0.40:9200","192.168.0.51:9200","192.168.0.52:9200"],
-    requestTimeout: 1600000
-});
-
-const models = {};
-models.client1 = elasticsearch_Client_1;
-//models.client2 = elasticsearch_Client_2;
-
-module.exports = models;
+module.exports = elasticsearch_Client;
 

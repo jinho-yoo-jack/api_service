@@ -48,8 +48,9 @@ app.use(cookie_parser());
 //var app_main = require('./routes/search');
 //app.use('/search', app_main);
 
-var app_main = require('./routes/search');
-app.use('/search', app_main);
+//var app_main = require('./routes/search');
+let totalsearch = require('./routes/totalsearch');
+app.use('/search/totalsearch', totalsearch);
 
 /***********************************************************************
  * 에러처리

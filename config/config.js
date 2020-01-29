@@ -1,20 +1,11 @@
-/**
- * Created by i-bricks on 2017-10-11.
- */
-var approot = require('app-root-path');
-
-var path      = require("path");
-var env       = process.env.ENV || "dev";
-var config    = require(approot + '/config/config.json')[env];
-
-
-/******************************************
- * 수행 환경
- ******************************************/
-console.log("*************** config *****************");
-// console.log("* env " + env);
-// console.log("* DB host " + config.host);
-console.log("****************************************");
+const configFile            = require('./config.json');
+const elasticsearch         = require('elasticsearch');
+const run_mode              = configFile.run_mode;
+const config                = configFile[run_mode];
+config['ELASTICSEARCH'] = new elasticsearch.Client({
+    host: config.ELASTIC_HOST,
+    requestTimeout: config.ELASTIC_TIMEOUT
+});
 
 module.exports = config;
 
