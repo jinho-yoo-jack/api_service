@@ -182,9 +182,7 @@ syncLimit=2
 delete.topic.enable=true
 ```
 2. 각각의 properties을 이용해서 zookeeper 구동
-$ ./bin/zookeeper-server-start.sh config/zookeeper1.properties -d
-$ ./bin/zookeeper-server-start.sh config/zookeeper2.properties -d
-$ ./bin/zookeeper-server-start.sh config/zookeeper3.properties -d
+$ ./bin/zookeeper-server-start.sh config/zookeeper1.properties -d<br>$ ./bin/zookeeper-server-start.sh config/zookeeper2.properties -d<br>$ ./bin/zookeeper-server-start.sh config/zookeeper3.properties -d
 
 ### kafka(Broker) 설정
 1. kafka#1,2,3 config 설정
@@ -221,6 +219,4 @@ num.partitions=3
 zookeeper.connect=localhost:2181,localhost:12181,localhost:22181
 ```
 2. kafka 실행
-$./bin/kafka-server-start.sh config/server1.properties -d
-$./bin/kafka-server-start.sh config/server2.properties -d
-$./bin/kafka-server-start.sh config/server3.properties -d
+$./bin/kafka-server-start.sh config/server1.properties -d<br>$./bin/kafka-server-start.sh config/server2.properties -d<br>$./bin/kafka-server-start.sh config/server3.properties -d
