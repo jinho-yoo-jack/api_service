@@ -148,13 +148,14 @@ delete.topic.enable=true
 ```sh
 # zookeeper 데이터 위치, 원하는 경로에 저장입력.
 # single node일 경우, 각각의 파일경로 상이하게 설정.
+# 1번 zookeeper : dataDir = /var/zookeeper
+# 2번 zookeeper : dataDir = /var/zookeeper-2
 dataDir=/var/zookeeper
- 
-# 하나의 클라이언트에서 동시접속하는 개수 제한, 기본값은 60이며, 0은 무제한
-maxClientCnxns=0
     
 # zookeeper port
 # single node cluster 환경일 경우, 각각의 properties 마다 다르게 설정해야함.
+# 1번 zookeeper : clientPort=12181
+# 2번 zookeeper : clientPort=22181
 clientPort=2181
  
 # 멀티 서버 설정
@@ -172,10 +173,10 @@ server.3=server_host_2:22888:23888
 # server.3에서 echo 3 > myid
  
 # 리더 서버에 연결해서 동기화하는 시간, [멀티서버옵션]
-#initLimit=5
+initLimit=5
  
 # 리더 서버를 제외한 노드 서버가 리더와 동기화하는 시간, [멀티서버옵션]
-#syncLimit=2
+syncLimit=2
  
 # 토픽을 삭제할 수 있도록 설정
 delete.topic.enable=true
@@ -186,7 +187,8 @@ $ ./bin/zookeeper-server-start.sh config/zookeeper2.properties -d
 $ ./bin/zookeeper-server-start.sh config/zookeeper3.properties -d
 
 ### kafka(Broker) 설정
-
+1. kafka#1,2,3 config 설정
+- file : /config/server1.properties
 ```sh
 # Broker의 ID로 Cluster내에서 Broker를 구분하기위해 사용.
 # 각가의 properties 마다 다르게 설정
@@ -218,4 +220,7 @@ num.partitions=3
 # 주키퍼의 접속 정보.
 zookeeper.connect=localhost:2181,localhost:12181,localhost:22181
 ```
-
+2. kafka 실행
+$./bin/kafka-server-start.sh config/server1.properties -d
+$./bin/kafka-server-start.sh config/server2.properties -d
+$./bin/kafka-server-start.sh config/server3.properties -d
