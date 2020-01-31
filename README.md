@@ -140,3 +140,82 @@ delete.topic.enable=true
 1. 생성CMD : bin/kafka-topics.sh --create --zookeeper 192.168.0.32:2181 --replication-factor 2 --partitions 4 --topic test
 - 옵션: --partitions [NUMBER] topic 파티션 수 설정, --topic [TOPIC_NAME] topic 이름 설정
 2. 확인CMD : bin/kafka-topics.sh --list --zookeeper 192.168.0.32:2181
+
+## Kafka Cluster Config on Single Node
+### zookeeper 설정
+1. zookeeper#1,2,3 config 설정
+- file : /config/zookeeper1.properties
+```sh
+# zookeeper 데이터 위치, 원하는 경로에 저장입력.
+# single node일 경우, 각각의 파일경로 상이하게 설정.
+dataDir=/var/zookeeper
+ 
+# 하나의 클라이언트에서 동시접속하는 개수 제한, 기본값은 60이며, 0은 무제한
+maxClientCnxns=0
+    
+# zookeeper port
+# single node cluster 환경일 경우, 각각의 properties 마다 다르게 설정해야함.
+clientPort=2181
+ 
+# 멀티 서버 설정
+# 2888은 각각의 zoopkeeper 간의 통신을 위해서 사용
+# 3888은 Leader 선출을 위해서 사용
+# server.id=host:port:port
+server.1=localhost:2888:3888
+server.2=server_host_1:12888:13888
+server.3=server_host_2:22888:23888
+ 
+# 멀티 서버 설정시 각 서버의 dataDir 밑에 myid 파일이 있어야함.
+# server.1,server.2,server.3 의 숫자는 /var/dataDir의 지정디렉토리/myid의 값과 동일해야된다.
+# server.1에서 echo 1 > myid
+# server.2에서 echo 2 > myid
+# server.3에서 echo 3 > myid
+ 
+# 리더 서버에 연결해서 동기화하는 시간, [멀티서버옵션]
+#initLimit=5
+ 
+# 리더 서버를 제외한 노드 서버가 리더와 동기화하는 시간, [멀티서버옵션]
+#syncLimit=2
+ 
+# 토픽을 삭제할 수 있도록 설정
+delete.topic.enable=true
+```
+2. 각각의 properties을 이용해서 zookeeper 구동
+$ ./bin/zookeeper-server-start.sh config/zookeeper1.properties -d
+$ ./bin/zookeeper-server-start.sh config/zookeeper2.properties -d
+$ ./bin/zookeeper-server-start.sh config/zookeeper3.properties -d
+
+### kafka(Broker) 설정
+
+```sh
+# Broker의 ID로 Cluster내에서 Broker를 구분하기위해 사용.
+# 각가의 properties 마다 다르게 설정
+broker.id=0
+ 
+# 생성되지 않은 토픽을 자동으로 생성할지 여부. 기본값은 true.
+auto.create.topics.enable=false
+ 
+# Broker가 받은 데이터를 관리위한 저장공간.
+# single node 일 경우, 다르게 설정
+# ex) /tmp/kafka-log, /tmp/kafka-log1, /tmp/kafka-log2
+log.dirs=C:/work/kafka_2.12-2.1.0/data/kafka
+ 
+# Broker가 사용하는 호스트와 포트를 지정, 형식은 PLAINTEXT://your.host.name:port 을 사용
+# single node일 경우, Broker 마다 상이하게 포트 설정
+# 1번 Broker : listeners=PLAINTEXT://:9092
+# 2번 Broker : listeners=PLAINTEXT://:19092
+listeners=PLAINTEXT://:9092
+ 
+# Producer와 Consumer가 접근할 호스트와 포트를 지정, 기본값은 listeners를 사용.
+# single node일 경우, Broker 마다 상이하게 포트 설정
+# 1번 Broker : advertised.listeners=PLAINTEXT://localhost:9092
+# 2번 Broker : advertised.listeners=PLAINTEXT://localhost:19092
+advertised.listeners=PLAINTEXT://localhost:9092
+
+# 토픽당 파티션의 수를 의미하며, 입력한 수만큼 병렬처리를 할 수 있지만 데이터 파일도 그만큼 늘어남. 기본값 1.
+num.partitions=3
+
+# 주키퍼의 접속 정보.
+zookeeper.connect=localhost:2181,localhost:12181,localhost:22181
+```
+
