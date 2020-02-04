@@ -1,5 +1,11 @@
 # API Service
 > `(WEB --> Kafa <-- Logstash --> Elasticsearch + Node.js)`
+## Action Process
+1. Web Event 발생
+2. 사용자 Session Info Topic(web-log) Msg Publish at kafka
+3. logstash consume kafa Topic((web-log)) Msg and output to Elasticsearch
+4. Elasticsearch wel-log index 재가공(유용한 데이터 축출)
+5. API 서비스
 
 # 1. Kafa
 ## 정의 
