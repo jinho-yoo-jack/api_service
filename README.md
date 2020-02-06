@@ -245,17 +245,18 @@ export SOURC_TYPE
 # 3. node.js
 ## pm2 설정
 ## pm2 logrotate
-- 명령어 :  pm2 set pm2-logrotate:<PARAM> <VALUE>
-  자동으로 pm2-logrotate Rebooting
-- Default Value
-Module: pm2-logrotate
-$ pm2 set pm2-logrotate:max_size 10k
-$ pm2 set pm2-logrotate:retain 30
-$ pm2 set pm2-logrotate:compress false
-$ pm2 set pm2-logrotate:dateFormat YYYY-MM-DD_HH-mm-ss
-$ pm2 set pm2-logrotate:workerInterval 30
-$ pm2 set pm2-logrotate:rotateInterval 0 0 * * *
-$ pm2 set pm2-logrotate:rotateModule true
+- 명령어 :  pm2 set pm2-logrotate:<PARAM> <VALUE> <br>
+  자동으로 pm2-logrotate Rebooting<br>
+- Default Value<br>
+Module: pm2-logrotate<br>
+$ pm2 set pm2-logrotate:max_size 10k<br>
+$ pm2 set pm2-logrotate:retain 30<br>
+$ pm2 set pm2-logrotate:compress false<br>
+$ pm2 set pm2-logrotate:dateFormat YYYY-MM-DD_HH-mm-ss<br>
+$ pm2 set pm2-logrotate:workerInterval 30<br>
+$ pm2 set pm2-logrotate:rotateInterval 0 0 * * *<br>
+$ pm2 set pm2-logrotate:rotateModule true<br>
+- 실행예시  
 ```sh
  jinokku  ~/DEV/node  pm2 install pm2-logrotate
 [PM2][Module] Installing NPM pm2-logrotate module
