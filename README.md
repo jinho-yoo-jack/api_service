@@ -245,7 +245,7 @@ export SOURC_TYPE
 # 3. node.js
 ## pm2 설정
 ## pm2 logrotate
-- 명령어 :  pm2 set pm2-logrotate:<PARAM> <VALUE> <br>
+- 명령어 :  $ pm2 set pm2-logrotate:[PARAM] [VALUE] <br>
   자동으로 pm2-logrotate Rebooting<br>
 - Default Value<br>
 Module: pm2-logrotate<br>
