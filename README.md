@@ -225,3 +225,77 @@ num.partitions=3
 zookeeper.connect=localhost:2181,localhost:12181,localhost:22181
 ```
 2. kafka 실행<br>$./bin/kafka-server-start.sh config/server1.properties -d<br>$./bin/kafka-server-start.sh config/server2.properties -d<br>$./bin/kafka-server-start.sh config/server3.properties -d
+
+
+
+
+# 2. Logstash Shell
+```sh
+#!/bin/sh
+
+# set source type
+SOURCE_TYPE = v1-card
+export SOURC_TYPE
+
+# include
+. "`dirname $0`/env.sh"
+```
+
+
+# 3. node.js
+## pm2 설정
+## pm2 logrotate
+```sh
+ jinokku  ~/DEV/node  pm2 install pm2-logrotate
+[PM2][Module] Installing NPM pm2-logrotate module
+[PM2][Module] Calling [NPM] to install pm2-logrotate ...
++ pm2-logrotate@2.7.0
+added 228 packages from 251 contributors and audited 487 packages in 4.824s
+found 0 vulnerabilities
+
+[PM2][Module] Module downloaded
+[PM2][WARN] Applications pm2-logrotate not running, starting...
+[PM2] App [pm2-logrotate] launched (1 instances)
+Module: pm2-logrotate
+$ pm2 set pm2-logrotate:max_size 10M
+$ pm2 set pm2-logrotate:retain 30
+$ pm2 set pm2-logrotate:compress false
+$ pm2 set pm2-logrotate:dateFormat YYYY-MM-DD_HH-mm-ss
+$ pm2 set pm2-logrotate:workerInterval 30
+$ pm2 set pm2-logrotate:rotateInterval 0 0 * * *
+$ pm2 set pm2-logrotate:rotateModule true
+Modules configuration. Copy/Paste line to edit values.
+[PM2][Module] Module successfully installed and launched
+[PM2][Module] Checkout module options: `$ pm2 conf`
+┌─────┬──────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id  │ name             │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+└─────┴──────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+Module
+┌────┬───────────────────────────────────────┬────────────────────┬───────┬──────────┬──────┬──────────┬──────────┬──────────┐
+│ id │ module                                │ version            │ pid   │ status   │ ↺    │ cpu      │ mem      │ user     │
+├────┼───────────────────────────────────────┼────────────────────┼───────┼──────────┼──────┼──────────┼──────────┼──────────┤
+│ 0  │ pm2-logrotate                         │ 2.7.0              │ 7747  │ online   │ 0    │ 0%       │ 12.7mb   │ jinokku  │
+└────┴───────────────────────────────────────┴────────────────────┴───────┴──────────┴──────┴──────────┴──────────┴──────────┘
+ jinokku  ~/DEV/node  pm2 set pm2-logrotate:max_size 10k
+[PM2] Module pm2-logrotate restarted
+[PM2] Setting changed
+Module: pm2-logrotate
+$ pm2 set pm2-logrotate:max_size 10k
+$ pm2 set pm2-logrotate:retain 30
+$ pm2 set pm2-logrotate:compress false
+$ pm2 set pm2-logrotate:dateFormat YYYY-MM-DD_HH-mm-ss
+$ pm2 set pm2-logrotate:workerInterval 30
+$ pm2 set pm2-logrotate:rotateInterval 0 0 * * *
+$ pm2 set pm2-logrotate:rotateModule true
+ jinokku  ~/DEV/node  pm2 set list
+Module: pm2-logrotate
+$ pm2 set pm2-logrotate:max_size 10k
+$ pm2 set pm2-logrotate:retain 30
+$ pm2 set pm2-logrotate:compress false
+$ pm2 set pm2-logrotate:dateFormat YYYY-MM-DD_HH-mm-ss
+$ pm2 set pm2-logrotate:workerInterval 30
+$ pm2 set pm2-logrotate:rotateInterval 0 0 * * *
+$ pm2 set pm2-logrotate:rotateModule true
+Module: module-db-v2
+$ pm2 set module-db-v2:pm2-logrotate [object Object]
+```
