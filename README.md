@@ -1,5 +1,5 @@
 # API Service
-> `(WEB --> Kafa <-- Logstash --> Elasticsearch + Node.js)`
+> `(WEB --> Kafka(Message Queue) <-- Logstash --> Elasticsearch + Node.js)`
 ## Action Process
 1. Web Event 발생
 2. 사용자 Session Info Topic(web-log) Msg Publish at kafka
