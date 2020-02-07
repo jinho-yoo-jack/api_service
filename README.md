@@ -230,15 +230,65 @@ zookeeper.connect=localhost:2181,localhost:12181,localhost:22181
 
 
 # 2. Logstash Shell
+2-1. 실행CMD : $ ./v1-card.sh [init/static/alias]
 ```sh
 #!/bin/sh
-
+# $0 : ./v1-card.sh
+# $1 : init or static or alias
 # set source type
 SOURCE_TYPE = v1-card
 export SOURC_TYPE
 
 # include
+# v1-card.sh의 Directory를 return
 . "`dirname $0`/env.sh"
+
+# mode
+MODE = $1
+echo -- run as ${MODE}
+
+INDEX_NAME = ${SOURCE_TYPE}
+export INDEX_NAME
+
+case $MODE in
+init)
+      SOURCE_BUILDE = `${BASE_PATH}/bin/utils/newindex.sh ${ELASTICSEARCH_HOST} ${INDEX_NAME}`
+      ELASTIC_INDEX = ${INDEX_NAME}_${SOURCE_BUILD}
+      export ELASTIC_INDEX
+      
+      SETTING_SCRIPT = $(<${BASE_PATH}/template/setting.json)
+      curl -XPUT 'http://'"${ELASTICSEARCH_HOST}"'/'"${ELASTIC_INDEX" -H 'Content-Type:application/json' -s -d'
+      {
+          "mapping" : {
+              "_doc" : {
+                "properties" : {
+                    "pageid" : { "type" : "keyword" },
+                    "pagetitle" : { "type" : "keyword" ,
+                          "field" : {
+                             "exact" : {"type":"text","analyzer":"sh_exact_analyzer","search_analyzer":"standard" },
+                             "keyword" : {"type":text","analyzer":"sh_keyword_analyzer","search_analyzer":"standard"},
+                             "ngram":{"type":"text","analyzer":"sh_front_analyzer","search_analzyer":"standard"},
+                             "chosung":{"type":"text","analyzer":"sh_chosung_analyzer","search_analzyer":"standard"},
+                             "kobrick":{"type":"text","analyzer":"kobrick","search_analzyer":"kobrick_search"},
+                          }
+                    },
+                    "search_title" : {"type":"alias","path":"pagetitle"},
+                    "search_title_exact" : {"type":"alias", "path":"pagetitle.exact"},
+                    "search_title_keyword" : {"type":"alias", "path":"pagetitle.keyword"},
+                    "search_title_ngram" : {"type":"alias", "path":"pagetitle.ngram"},                                        
+                    "search_title_chosung" : {"type":"alias", "path":"pagetitle.chosung"},
+                    "search_title_kobrick" : {"type":"alias", "path":"pagetitle.kobrick"},
+                    ...
+                    ...
+              }
+            }
+          },
+          '"${SETTING_SCRIPT}"'
+     }
+     '; echo
+     ;;
+alias)
+      
 ```
 
 
