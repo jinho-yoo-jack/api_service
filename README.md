@@ -7,7 +7,7 @@
 4. Elasticsearch wel-log index 재가공(유용한 데이터 축출)
 5. API 서비스
 
-# 1. Kafa
+# 1. Kafka
 ## 정의 
 : Message Queue의 일종, pub-sub모델의 Message Queue.
 ## 특징 
