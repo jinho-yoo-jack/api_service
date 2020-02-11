@@ -3,18 +3,24 @@
   "local": {
     "app_server_default_port" : "10000",
     "ELASTIC_HOST"            : ["localhost:9200"],
+    "ELASTIC_HOST_RE"         : ["localhost:29200"],
+    "ELASTIC_GATE_WAY"        : "localhost:19100",
     "ELASTIC_TIMEOUT"         : 100000,
     "CLUSTER_STATUS"          : false
   },
   "dev": {
     "app_server_default_port" : "10000",
     "ELASTIC_HOST"            : ["localhost:9200"],
+    "ELASTIC_HOST_RE"         : ["localhost:29200"],
+    "ELASTIC_GATE_WAY"        : "localhost:19100",
     "ELASTIC_TIMEOUT"         : 100000,
     "CLUSTER_STATUS"          : false
   },
   "ops" : {
     "app_server_default_port" : "10000",
     "ELASTIC_HOST"            : ["192.168.0.40:9200","192.168.0.51:9200","192.168.0.52:9200"],
+    "ELASTIC_HOST_RE"         : ["localhost:9200"],
+    "ELASTIC_GATE_WAY"        : "localhost:19100",
     "ELASTIC_TIMEOUT"         : 10000
   }
 
