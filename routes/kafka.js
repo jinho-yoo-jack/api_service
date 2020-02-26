@@ -16,6 +16,7 @@ const helper = require(`${approot}`+'/routes/lib.js');
 
 //#Add Customer Module
 const config = require(`${approot}`+'/config/config.js');
+const helper = require(`${approot}`+'/common/helper.js');
 const broker = config.BROKER;
 const res_ok = require(`${approot}`+'/lib/res_ok');
 const res_err = require(`${approot}`+'/lib/res_err');
