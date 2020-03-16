@@ -7,6 +7,28 @@
 4. Elasticsearch wel-log index 재가공(유용한 데이터 축출)
 5. API 서비스
 
+# 0. SSL Certificates
+- 정의 : Client와 Server간의 통신을 제 3자가 보증해주는 전자화된 문서이다. 클라이언트가 서버에 접속한 직후에<br>
+Server는 Client에게 이 인증서 정보를 전달한다.
+- 공개키(Public Key)
+두개의 Key를 갖는다. A키로 암호화를 하면 B키로 복호화 할 수 있고, B키로 암호하면 A키로 복호화 할 수 있는 방식이다.
+이 방식에 착안해서 두개의 키 중 하나를 비공개키(Private Key, 개인키, 비밀키라고 부른다)로 하고 나머지를 공개키로 지정한다.
+비공개키는 자신만이 가지고 있고, 공개키는 타인에게 제공한다. 공개키를 제공 받은 타인은 공개키를 이용해서 정보를 암호화 한다.
+암호화한 정보를 비공개키를 가지고 있는 사람에게 전송한다. 그렇게 되면 개인키를 이용해 복호화를 진행하면 된다.
+이러한 방식을 응용하면, 비공개키를 이용해서 정보를 암호화 한 후에 공개키와 함께 암호화된 정보를 전송한다. 정보(암호환된) 와 공개키를
+획득한 사람은 공개키를 이용해서 암호화된 정보를 복호화한다. 데이터를 보호하는 것이 목적이 아니라, 공개키가 데이터를 제공한 사람의
+신원을 보장해주는 것이다.
+```sh
+# RSA 방식의 Private key
+# Lengh : 1024
+$ openssl genrsa -out private.pem 1024;
+
+# Through Maked Private key, Create Public Key
+$ openssl rsa -in private.pem -out public.pem -outform PEM -pubout;
+
+```
+* CA(Certificate authority) :  인증서의 역할은 클라이언트가 접속한 서버가 클라이언트가 의도한 서버가 맞는지를 보장하는 역할을 한다. 이 역할을 하는
+민간기업들이 있는데 이런 기업들을 CA 또는 Root Certificate라고 부른다.
 # 1. Kafka
 ## 정의 
 : Message Queue의 일종, pub-sub모델의 Message Queue.
