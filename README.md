@@ -7,6 +7,63 @@
 4. Elasticsearch wel-log index 재가공(유용한 데이터 축출)
 5. API 서비스
 
+
+# A. Building Environment in Docker
+* OS : CentOS 7
+```sh
+$ docker pull centos
+$ docker run -i -t -p 8081:80 --name shcard centos /bin/bash
+root > exit
+$ docker ps -a
+CONTAINER ID   IMAGE       COMMAND        CREATED             STATUS              PORTS                  NAMES
+8f33f9563dfd   centos      "/bin/bash"    16 minutes ago      Up 15 minutes       0.0.0.0:8081->80/tcp   shcard
+
+$docker run -i -t -p 8081:80 --name shcard centos /bin/bash
+root > cd ~
+root > vi .bashrc
+# cmd ls -al alias
+alias ll="ls -al"
+# cmd clear alias
+alias clear="printf '\033c'"
+#:wq
+root > source .bashrc
+```
+* Java 1.8
+```sh
+# Step1 : Install Java 1.8
+root > yum -y update
+root > yum -y install java-1.8.0-openjdk
+root > java -version
+# Step2 : Set Java`s Home Enviroment
+root > update-alternatives --config java
+
+There is 1 program that provides 'java'.
+
+  Selection    Command
+-----------------------------------------------
+*+ 1           java-1.8.0-openjdk.x86_64 (/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64/jre/bin/java)
+
+Enter to keep the current selection[+], or type selection number:
+root > vi .bashrcclear
+root > vi .bash_profile
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64/jre/bin/java
+root > source .bash_profile
+# Step3 : Check Environment
+root > echo $JAVA_HOME
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64/jre/bin/java
+root > export PS1="\033[00;33m\u@\h\033[00;32m\d \t\033[00m \W #"
+# HostName Coloor Config
+root > export PS1="\033[00;33m\u@\033[00;32m\h \033[00m \W #"
+# SET LS COLOR 
+export LS_COLORS="di=00;36:fi=00;37"
+```
+* ELASTICSEARCH : 6.4
+참조 : https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html
+* Logstash
+* Kafka/Zookeeper
+* [i-bricks Solution]openQuery_SE
+* [i-bricks Solution]openQuery_RE
+
 # 0. SSL Certificates
 - 정의 : Client와 Server간의 통신을 제 3자가 보증해주는 전자화된 문서이다. 클라이언트가 서버에 접속한 직후에<br>
 Server는 Client에게 이 인증서 정보를 전달한다.
