@@ -1,0 +1,91 @@
+"settings" : {
+    "index" : {
+      "number_of_shards" : 3,
+      "auto_expand_replicas" : "0-2"
+    },
+    "analysis" : {
+      "analyzer" : {
+        "sh_exact_analyzer" : {
+          "tokenizer" : "my_keyword",
+          "char_filter" : ["remove_special_char_filter", "remove_whitespace_filter" ],
+          "filter" : ["lowercase"]
+        },
+        "sh_keyword_analyzer" : {
+          "tokenizer" : "my_standard",
+          "filter" : ["lowercase", "trim"]
+        },
+        "sh_front_ngram_analyzer" : {
+          "tokenizer" : "standard",
+          "filter" : ["lowercase","edge_filter"]
+        },
+        "sh_html_analyzer" : {
+          "type" : "custom",
+          "tokenizer" : "standard",
+          "char_filter" : ["html_strip"]
+        },
+        "sh_kobrick_analyzer" : {
+          "type" : "custom",
+          "tokenizer" : "standard",
+          "filter" : ["kobrick_filter"],
+          "char_filter" : ["html_strip"]
+        },
+        "sh_chosung_analyzer" : {
+          "filter" : ["lowercase","trim","autocomplete_chosung"],
+          "tokenizer" : "standard"
+        },
+        "edge_analyzer" : {
+          "tokenizer" : "edge_ngram",
+          "filter" : ["lowercase"]
+        },
+        "ngram_analyzer" : {
+          "tokenizer" : "standard",
+          "filter" : ["lowercase"]
+        }
+      }
+    },
+    "filter" : {
+      "edge_filter" : {
+        "type" : "custom",
+        "max_gram" : "10",
+        "min_gram" : "1"
+      },
+      "ngram_filter" : {
+        "type" : "nGram"
+      }
+    },
+    "char_filter" : {
+      "remove_special_char_filter" : {
+        "type" : "pattern_replace",
+        "pattern" : "[^\uAC00-\uD7A3xfe0-9a-zA-Z\\s]",
+        "replacement" : ""
+      },
+      "replace_special_char_filter" : {
+        "type" : "pattern_replace",
+        "pattern" : "[^\uAC00-\uD7A3xfe0-9a-zA-Z\\s]",
+        "replacement" : " "
+      },
+      "remove_whitespace_filter" : {
+        "type" : "pattern_replace",
+        "pattern" : " ",
+        "replacement" : ""
+      }
+    },
+    "tokenizer" : {
+      "my_keyword" : {
+        "type" : "keyword",
+        "max_token_lengh" : "10"
+      },
+      "my_standard" : {
+        "type" : "standard",
+        "max_token_length" : "10"
+      },
+      "my_pattern" : {
+        "type" : "pattern",
+        "patter" : ","
+      },
+      "edge_ngram" : {
+        "type" : "edge_ngram",
+        "token_char" : ["letter","digit","punctuation"]
+      }
+    }
+  }

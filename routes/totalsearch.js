@@ -11,6 +11,7 @@ const jsonStream = require('JSONStream');
 const moment = require('moment');
 
 // #Common Module
+const config = require(`${rootpath}` + '/config/config.js');
 const commons = require(`${rootpath}` + '/common/commons');
 const res_ok = require(`${rootpath}` + '/lib/res_ok');
 const res_err = require(`${rootpath}` + '/lib/res_err');
@@ -20,6 +21,7 @@ const openqrySE = require(`${rootpath}` + '/models/elasticsearch');
 const openqryRE = require(`${rootpath}` + '/models/elasticsearch_RE');
 const ES_SE = require(`${rootpath}` + '/lib/elasticsearch_api')(openqrySE);
 const ES_RE = require(`${rootpath}` + '/lib/elasticsearch_api')(openqryRE);
+const logger = require(`${rootpath}` + '/lib/logger')(module);
 
 // Global Variable
 const today = moment().format('YYYYMMDD');
@@ -29,6 +31,19 @@ const today = moment().format('YYYYMMDD');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
+app.get('/logger', (req,res) => {
+    let options = {
+        console : {
+            level : 'info'
+        }
+    };
+    //logger.info(config);
+    //logger.info(typeof logger);
+    //logger.info('Info Msg');
+    //logger.error('Error Msg');
+    logger.log('error','Info Msg');
+
+});
 // app.all('URL', check() ,() => {}
 /* I/F ID : SEARCH-0001  */
 app.all('/', [

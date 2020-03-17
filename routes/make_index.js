@@ -64,7 +64,7 @@ app.all('/', async (req, res) => {
         result = await insertIndexById(_index, _docType, _docId, _opType, fields, values);
         let success = result._shards.successful || 0;
         if(success > 0) {
-            let search_reponse = searchIndexById(_index, _docType);
+            let search_reponse = searchIndexById(_index, _docType, _docId);
             if(search_reponse.hits != undefined)
                 res.send(res_ok(200,'Document Update Success',source));
             else
@@ -87,7 +87,7 @@ app.all('/', async (req, res) => {
 
 
 });
-async function searchIndexById(_index, _docType){
+async function searchIndexById(_index, _docType, _docId){
     let search_query = {
         "query" : {
             "match" : {

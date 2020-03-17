@@ -1,12 +1,16 @@
 const rootpath = require('app-root-path');
-const JSONStream = require('JSONStream');
 
-const openqrySE = require(`${rootpath}`+'/models/elasticsearch');
-const openqryRE = require(`${rootpath}`+'/models/elasticsearch_RE');
-const ES_SE = require(`${rootpath}` + '/lib/elasticsearch_api')(openqrySE);
-const ES_RE = require(`${rootpath}` + '/lib/elasticsearch_api')(openqryRE);
+const openqrySE     = require(`${rootpath}`+'/models/elasticsearch');
+const openqryRE     = require(`${rootpath}`+'/models/elasticsearch_RE');
+const Elasticsearch = require(`${rootpath}` + '/lib/elasticsearch_model');
+const logger        = require(`${rootpath}` + '/lib/logger')(module);
 
 const main = async () => {
+    const ES_SE = new Elasticsearch(openqrySE);
+    const ES_RE = new Elasticsearch(openqryRE);
+
+
+    /*
     let bodyQuery = {
         "query" : {
             "bool" : {
@@ -23,11 +27,13 @@ const main = async () => {
     };
     await ES_SE.singleSearch('companydatabase', bodyQuery)
         .then((response) => {
-            console.log('After parser ::: %j', response);
+            logger.info(response);
         })
         .catch((err) => {
             console.log('Fail :: %j', err);
         });
+
+     */
 };
 
 main();

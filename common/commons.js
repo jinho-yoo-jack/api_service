@@ -6,12 +6,15 @@
     소분류 : insert, delete, update ...
  */
 const rootpath = require('app-root-path');
-const commons = module.exports = {};
+const request = require('request');
+const {
+    OPENQUERY_GATE_WAY
+}   = require(`${rootpath}`+'/config/config');
+
+const commons  = module.exports = {};
 /*#################################################################################################################*/
 
-// jsonQuery
-
-//
+// String Replace
 commons.replace_split = (str, delimiter) => {
     let arr = [];
     if(str != "" && str != undefined){
@@ -47,4 +50,32 @@ commons.chgDateFrm = (strDate) => {
             dd   = string_date.substring(5,strLeng);
         }
     }
-}
+};
+
+// str을 splitStr 기준으로 자르고 joinStr로 연결
+commons.splitAndJoin = (str, splitStr, joinStr) => {
+    let result = null;
+
+    let beforeSplitStr = str;
+    let afterSplitStr = beforeSplitStr.split(splitStr);
+    result = afterSplitStr.join(joinStr);
+
+    return result;
+};
+
+// OpenQuery Search Keyword Logging
+commons.queryLogPost = (indexName, bodyQuery, hitsTotal, responstTook) => {
+    const url = 'http://' + OPENQUERY_GATE_WAY + '/gateway/_querylog';
+    let bodyLogQuery = {
+        uri : url,
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : {
+            'index' : indexName,
+            'query' : bodyQuery,
+            'total' : hitsTotal,
+            'took' : responstTook
+        }
+    };
+    request(bodyLogQuery);
+};

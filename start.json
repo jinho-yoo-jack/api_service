@@ -1,9 +1,9 @@
 {
   "apps": [{
-    "name": "podty",
+    "name": "TEST",
     "script": "search.js",
     "watch": "./",
     "node_args": "--max_old_space_size=5000",
-    "instances": 8
+    "instances": 1
   }]
 }

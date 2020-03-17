@@ -1,26 +1,26 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
-var path = require('path');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var http = require('http');
-var schedule = require('node-schedule'); // 스케줄 처리를 위함
+const path = require('path');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const http = require('http');
+const schedule = require('node-schedule'); // 스케줄 처리를 위함
 
-var approot = require('app-root-path');
-var config = require('./config/config');
+const approot = require('app-root-path');
+const config = require(`${approot}` + '/config/config');
 
 
 /************************************************************
  * 크로스 도메인 처리
  ************************************************************/
-var corsOptions = {
+const corsOptions = {
     origin: true,
     credentials: true
 };
 
-var CORS = require('cors')(corsOptions);
+const CORS = require('cors')(corsOptions);
 
 app.use(CORS);
 
@@ -36,18 +36,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use(require('./service/util/get_user_key'));
 
 // cookie parser
-var cookie_parser = require('cookie-parser');
+const cookie_parser = require('cookie-parser');
 app.use(cookie_parser());
 
 
 /***********************************************************************
  * v1 Search
  **********************************************************************/
-// Search
-//var app_main = require('./routes/search');
+// Routing
+//const app_main = require('./routes/search');
 //app.use('/search', app_main);
 
-//var app_main = require('./routes/search');
+//const app_main = require('./routes/search');
 let totalsearch = require('./routes/totalsearch');
 app.use('/search/totalsearch', totalsearch);
 
@@ -56,7 +56,7 @@ app.use('/search/totalsearch', totalsearch);
  **********************************************************************/
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
@@ -74,8 +74,8 @@ app.use(function(err, req, res, next) {
 
 
 // 8080 으로 변경예정
-var port = '14050';
-// var port = normalizePort(process.env.PORT || config.app_server_default_port);
+const port = '14050';
+// const port = normalizePort(process.env.PORT || config.app_server_default_port);
 
 app.set('port', port);
 
@@ -83,7 +83,7 @@ app.set('port', port);
 /***********************************************************************
  * 서버기동
  **********************************************************************/
-var server = http.createServer(app);
+const server = http.createServer(app);
 server.listen(port);
 server.on('listening', onListening);
 
@@ -92,7 +92,7 @@ console.log("process.pid:"+process.pid);
 
 
 function normalizePort(val) {
-  var port = parseInt(val, 10);
+  const port = parseInt(val, 10);
 
   if (isNaN(port)) { return val; }
   if (port >= 0) { return port; }
@@ -101,8 +101,8 @@ function normalizePort(val) {
 }
 
 function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
+  const addr = server.address();
+  const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
   console.log('Listening on ' + bind);
 }
 

@@ -27,7 +27,9 @@
     "json-query": "^2.2.2",
     "kafka-node": "^5.0.0",
     "md5": "^2.2.1",
-    "moment": "^2.17.1",
+    "mkdir": "0.0.2",
+    "mkdirp": "^1.0.3",
+    "moment": "^2.24.0",
     "morgan": "^1.9.1",
     "mysql": "^2.13.0",
     "node-gyp": "^3.6.2",
@@ -43,7 +45,9 @@
     "striptags": "^3.0.1",
     "ua-parser-js": "^0.7.21",
     "url": "^0.11.0",
-    "webp-converter": "^2.1.6"
+    "webp-converter": "^2.1.6",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.4.2"
   },
   "main": "suggest.js",
   "directories": {
