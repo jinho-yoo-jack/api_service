@@ -38,7 +38,7 @@
     "oracle-client": "^1.1.0",
     "pm2": "^4.1.2",
     "promise": "^7.1.1",
-    "redis": "^2.8.0",
+    "redis": "^3.1.1",
     "request": "^2.79.0",
     "request-promise": "^4.1.1",
     "sequelize": "^3.30.0",
