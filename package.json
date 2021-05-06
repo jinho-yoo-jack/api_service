@@ -22,7 +22,7 @@
     "geoip-lite": "^1.4.0",
     "hashmap": "^2.3.0",
     "jade": "~1.11.0",
-    "json": "^9.0.6",
+    "json": "^10.0.0",
     "json-find": "^2.0.3",
     "json-query": "^2.2.2",
     "kafka-node": "^5.0.0",
