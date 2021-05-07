@@ -43,7 +43,7 @@
     "request-promise": "^4.1.1",
     "sequelize": "^3.30.0",
     "striptags": "^3.0.1",
-    "ua-parser-js": "^0.7.21",
+    "ua-parser-js": "^0.7.24",
     "url": "^0.11.0",
     "webp-converter": "^2.1.6",
     "winston": "^3.2.1",
