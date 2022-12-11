@@ -16,7 +16,7 @@
     "debug": "~2.2.0",
     "ejs": "~2.5.5",
     "elasticsearch": "^12.1.3",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-validator": "^6.4.0",
     "express-validator-errors": "^2.1.0",
     "geoip-lite": "^1.4.0",
